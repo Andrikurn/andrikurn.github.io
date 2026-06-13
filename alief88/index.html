@@ -242,7 +242,12 @@
 
   const STARTING_BALANCE = 50000;
   const SPIN_COST = 15000;
-  let balance = STARTING_BALANCE;
+  const STORAGE_KEY = "alief88_balance";
+
+  let balance = parseInt(localStorage.getItem(STORAGE_KEY));
+  if (isNaN(balance)) {
+    balance = STARTING_BALANCE;
+  }
 
   function formatRupiah(num) {
     return "$" + num.toLocaleString('id-ID');
@@ -250,6 +255,7 @@
 
   function updateBalanceDisplay() {
     balanceEl.textContent = "Saldo: " + formatRupiah(balance);
+    localStorage.setItem(STORAGE_KEY, balance);
   }
   updateBalanceDisplay();
 
