@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎰 WIRSYADRI88 - Slot Paling Gacor!</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px #ffd700;
+  }
+
+  .subtitle {
+    margin-bottom: 25px;
+    opacity: 0.8;
+    font-size: 14px;
+  }
+
+  #balance {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffd700;
+    text-shadow: 0 0 8px #ffae00;
+  }
+  .machine {
+    background: #2b2738;
+    border: 6px solid #ffd700;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+  }
+
+  .reels {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .reel {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #444;
+  }
+
+  .reel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .reel.spinning img {
+    animation: spin-blur 0.15s linear infinite;
+  }
+
+  @keyframes spin-blur {
+    0% { transform: translateY(0); filter: blur(2px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); filter: blur(2px); }
+  }
+
+  button#spinBtn {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.1s ease;
+  }
+
+  button#spinBtn:active {
+    transform: scale(0.96);
+  }
+
+  button#spinBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  #result {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    min-height: 30px;
+    text-shadow: 0 0 8px #ffd700;
+  }
+
+  .jackpot-glow {
+    animation: glow 0.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
+    to   { text-shadow: 0 0 20px #fff700, 0 0 30px #ffae00; }
+  }
+
+  .footer-note {
+    margin-top: 25px;
+    font-size: 12px;
+    opacity: 0.6;
+    max-width: 320px;
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  .modal-overlay.show {
+    display: flex;
+  }
+  .modal-box {
+    background: linear-gradient(135deg, #2b2738, #1f1c2c);
+    border: 4px solid #ffd700;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 40px #ffd700;
+    animation: pop-in 0.3s ease;
+    max-width: 90%;
+  }
+  @keyframes pop-in {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .modal-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    animation: glow 0.6s ease-in-out infinite alternate;
+  }
+  .modal-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffae00;
+    margin-bottom: 20px;
+  }
+  .modal-box button {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <h1>🎰 WIRSYADRI88</h1>
+  <p class="subtitle">Slot paling gacor! Dijamin Jackpot!</p>
+
+  <div id="balance">Saldo: $50.000</div>
+
+  <div class="machine">
+    <div class="reels">
+      <div class="reel" id="reel1"><img src="" alt="symbol"></div>
+      <div class="reel" id="reel2"><img src="" alt="symbol"></div>
+      <div class="reel" id="reel3"><img src="" alt="symbol"></div>
+    </div>
+    <button id="spinBtn">SPIN!</button>
+    <div id="result"></div>
+  </div>
+
+  <p class="footer-note">
+    Ayo! Main di situs WIRSYADRI88! Dijamin pasti jackpot!
+  </p>
+
+  <div id="jackpotModal" class="modal-overlay">
+    <div class="modal-box">
+      <img src="assets/jackpot_img.jpeg" alt="Jackpot" class="modal-img">
+      <p class="modal-text">SELAMAT ANDA JACKPOT!<br>SYADRI PASTI BANGGA</p>
+      <button id="closeModal">Tutup</button>
+    </div>
+  </div>
+
+  <div id="rungkadModal" class="modal-overlay">
+    <div class="modal-box">
+      <img src="assets/rungkad_img.jpeg" alt="Rungkad" class="modal-img">
+      <p class="modal-text">YAHAHA RUNGKAD</p>
+      <button id="pinjolBtn">Pinjol</button>
+    </div>
+  </div>
+
+<script>
+  const ASSET_BASE = "assets/";
+  const symbols = [
+    "slot1.jpeg",
+    "slot2.jpeg",
+    "slot3.jpeg",
+    "slot4.jpeg",
+    "slot5.jpeg"
+  ];
+
+  const JACKPOT_SYMBOL = "jackpot_img.jpeg";
+
+  const reelEls = [
+    document.getElementById('reel1'),
+    document.getElementById('reel2'),
+    document.getElementById('reel3')
+  ];
+  const spinBtn = document.getElementById('spinBtn');
+  const resultEl = document.getElementById('result');
+  const jackpotModal = document.getElementById('jackpotModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const rungkadModal = document.getElementById('rungkadModal');
+  const pinjolBtn = document.getElementById('pinjolBtn');
+  const balanceEl = document.getElementById('balance');
+
+  const STARTING_BALANCE = 50000;
+  const SPIN_COST = 20000;
+  let balance = STARTING_BALANCE;
+
+  function formatRupiah(num) {
+    return "$" + num.toLocaleString('id-ID');
+  }
+
+  function updateBalanceDisplay() {
+    balanceEl.textContent = "Saldo: " + formatRupiah(balance);
+  }
+  updateBalanceDisplay();
+
+  closeModalBtn.addEventListener('click', () => {
+    jackpotModal.classList.remove('show');
+  });
+
+  pinjolBtn.addEventListener('click', () => {
+    balance = STARTING_BALANCE;
+    updateBalanceDisplay();
+    rungkadModal.classList.remove('show');
+    resultEl.textContent = "";
+  });
+
+  function setReelImage(reelIndex, symbolFile) {
+    const img = reelEls[reelIndex].querySelector('img');
+    img.src = ASSET_BASE + symbolFile;
+  }
+
+  function randomSymbol() {
+    return symbols[Math.floor(Math.random() * symbols.length)];
+  }
+
+  function randomNonJackpotResult() {
+    let result;
+    do {
+      result = [randomSymbol(), randomSymbol(), randomSymbol()];
+    } while (result.every(s => s === JACKPOT_SYMBOL));
+    return result;
+  }
+
+  reelEls.forEach((_, i) => setReelImage(i, randomSymbol()));
+
+  function spin() {
+    if (balance < SPIN_COST) {
+      rungkadModal.classList.add('show');
+      return;
+    }
+
+    balance -= SPIN_COST;
+    updateBalanceDisplay();
+
+    spinBtn.disabled = true;
+    resultEl.textContent = "";
+    resultEl.classList.remove('jackpot-glow');
+
+    const isJackpot = Math.random() < 0.2;
+    const finalSymbols = isJackpot
+      ? [JACKPOT_SYMBOL, JACKPOT_SYMBOL, JACKPOT_SYMBOL]
+      : randomNonJackpotResult();
+
+    reelEls.forEach(reel => reel.classList.add('spinning'));
+
+    let ticks = 0;
+    const maxTicks = 18;
+    const interval = setInterval(() => {
+      ticks++;
+      reelEls.forEach((reel, i) => {
+        setReelImage(i, randomSymbol());
+      });
+
+      if (ticks >= maxTicks) {
+        clearInterval(interval);
+
+        reelEls.forEach((reel, i) => {
+          setReelImage(i, finalSymbols[i]);
+          reel.classList.remove('spinning');
+        });
+
+        if (isJackpot) {
+          balance += 50000;
+          updateBalanceDisplay();
+          resultEl.textContent = "🎉 JACKPOT!! 🎉";
+          resultEl.classList.add('jackpot-glow');
+          jackpotModal.classList.add('show');
+        } else {
+          resultEl.textContent = "yahaha kalah, coba lagi yek";
+        }
+
+        spinBtn.disabled = false;
+      }
+    }, 80);
+  }
+
+  spinBtn.addEventListener('click', spin);
+</script>
+
+</body>
+</html>
