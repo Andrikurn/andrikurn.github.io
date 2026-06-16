@@ -1,1 +1,0 @@
-# andrikurn.github.io
