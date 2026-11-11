@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiz Olimpiade Bahasa Inggris SMP</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1d2433;--mu:#667085;--bd:#d9deea;--ac:#3b5bdb;--ok:#2b8a3e;--okb:#e6f4ea;--no:#c92a2a;--nob:#fdecec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171f;--card:#1e222d;--tx:#e8ebf3;--mu:#9aa3b5;--bd:#343a4a;--ac:#748ffc;--ok:#69db7c;--okb:#173222;--no:#ff8787;--nob:#3a1d1d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14171f;--card:#1e222d;--tx:#e8ebf3;--mu:#9aa3b5;--bd:#343a4a;--ac:#748ffc;--ok:#69db7c;--okb:#173222;--no:#ff8787;--nob:#3a1d1d;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:1.3rem;margin:8px 0 4px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-top:12px}
+.mu{color:var(--mu);font-size:.9rem}
+select,button{font:inherit}
+select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);margin:10px 0}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:10px;padding:12px 16px;width:100%;margin-top:12px;cursor:pointer}
+.bar{height:6px;background:var(--bd);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac);width:0}
+.top{display:flex;justify-content:space-between;margin:12px 0 6px}
+.pass{border-left:4px solid var(--ac);padding:8px 12px;margin:0 0 12px;background:var(--bg);border-radius:6px;font-size:.95rem}
+.q{font-weight:600;margin:0 0 12px}
+.o{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:11px 12px;margin-top:8px;cursor:pointer}
+.o b{margin-right:8px;color:var(--ac)}
+.o.ok{background:var(--okb);border-color:var(--ok)}
+.o.no{background:var(--nob);border-color:var(--no)}
+.o:disabled{cursor:default;opacity:1;color:var(--tx)}
+.row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:.92rem}
+.big{font-size:2.4rem;font-weight:700;text-align:center;margin:4px 0}
+.btn:disabled{opacity:.5;cursor:default}
+.jump{display:flex;align-items:center;gap:8px;margin:10px 0}
+.jump input{width:90px;padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+.jump button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.btn.sec{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.jump button.sec{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.g{color:var(--ok)}.r{color:var(--no)}.rc{white-space:nowrap}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var C=["Bagian A — Words & Structure Knowledge","Bagian B — Reading","Bagian C — Spoken & Written Expression","Bagian D — Higher-Order Thinking Skills"];
+var P=["Some people call Rina a night owl, but she says she simply works best when the world is quiet. Every evening, while others scroll through their phones, she sits by the window and writes stories. It is no piece of cake: her first drafts are often a mess. Still, she keeps at it, because she believes that a river is made of many small drops.","Last year the town of Marlow banned plastic bags in all its shops. At first, shoppers complained about carrying cloth bags. Within six months, however, plastic waste on the beach fell by almost half, and local fishermen reported fewer bags in their nets. As a result, two neighbouring towns have now announced similar rules."];
+var Q=[];function q(c,p,s,o,a){Q.push({c:c,p:p,s:s,o:o,a:a})}
+q(0,-1,"The scientist was ___ to find a cure, so she worked day and night.",["reluctant","determined","hesitant","indifferent"],1);
+q(0,-1,"By the time we arrived, the movie ___.",["already started","has already started","had already started","was already starting"],2);
+q(0,-1,"___ it rained heavily, the match went on.",["Although","Because","So","Unless"],0);
+q(0,-1,"The synonym of “meticulous” is ...",["careless","careful","quick","noisy"],1);
+q(0,-1,"The antonym of “scarce” is ...",["rare","abundant","tiny","costly"],1);
+q(0,-1,"The girl ___ bike was stolen reported it to the police.",["who","whose","whom","which"],1);
+q(0,-1,"I ___ in Bandung since 2019.",["live","lived","have lived","am living"],2);
+q(0,-1,"If she ___ harder, she would have passed the exam.",["studied","had studied","has studied","would study"],1);
+q(0,-1,"This is the house ___ my grandfather was born.",["where","which","whose","who"],0);
+q(0,-1,"He didn’t bring an umbrella; ___, he got wet.",["therefore","however","moreover","otherwise"],0);
+q(0,-1,"The villagers were ___ by the flood and lost everything they owned.",["delighted","devastated","assisted","convinced"],1);
+q(0,-1,"At this time tomorrow, we ___ on the beach.",["lie","will be lying","will lie","have lain"],1);
+q(1,0,"What is the main idea of the text?",["Rina dislikes working at night","Rina keeps writing stories every evening despite the difficulties","Rina uses her phone too much","Rina wants to become a bird expert"],1);
+q(1,0,"The idiom “no piece of cake” means ...",["not delicious","not easy","not expensive","not finished"],1);
+q(1,0,"“A river is made of many small drops” is an example of ...",["figurative language meaning small efforts add up","a literal description of water","a scientific fact","a sarcastic remark"],0);
+q(1,0,"A “night owl” is a person who ...",["sleeps all day","stays up late","hunts animals","dislikes quiet places"],1);
+q(1,0,"Why does Rina keep writing even though her drafts are messy?",["She is paid for each draft","She believes small steps gradually build something big","She has no other hobby","Her friends force her"],1);
+q(1,1,"Why did plastic waste on the beach fall?",["Fishermen cleaned the sea","Shops stopped giving plastic bags","Shoppers stayed at home","Cloth became cheaper"],1);
+q(1,1,"What was the result of the town’s success?",["Shops closed","Fishermen lost their jobs","Two nearby towns plan similar rules","The ban was cancelled"],2);
+q(1,1,"The word “however” shows ...",["addition","contrast","example","time"],1);
+q(1,1,"The best title for the text is ...",["Cloth Bags Are Expensive","A Town’s Ban Brings Cleaner Beaches","Fishermen Against the Government","Shopping in Marlow"],1);
+q(1,-1,"“She let the cat out of the bag.” It means she ...",["freed a pet","revealed a secret","lost her bag","bought a cat"],1);
+q(1,-1,"“Her kind words were music to my ears.” The phrase means her words were ...",["very loud","pleasant to hear","hard to understand","boring"],1);
+q(1,-1,"“The classroom was a zoo when the teacher left.” It means the class was ...",["full of animals","wild and noisy","very quiet","clean"],1);
+q(2,-1,"A: Would you mind opening the window?<br>B: ___",["Not at all. I’ll open it.","Yes, please do.","No, I don’t open it.","I’m afraid you are welcome."],0);
+q(2,-1,"A: I’m sorry I broke your pencil.<br>B: ___",["You’re welcome.","Never mind, it’s only a pencil.","Same to you.","I’d love to."],1);
+q(2,-1,"“Oh great, another Monday morning.” The speaker’s tone is most likely ...",["enthusiastic","sarcastic","grateful","admiring"],1);
+q(2,-1,"Which is the most polite way to ask a teacher to repeat something?",["Say it again!","Repeat that now.","Excuse me, Sir, could you repeat that, please?","What? I didn’t hear."],2);
+q(2,-1,"A: How about joining our study group?<br>B: ___",["Sounds great, count me in.","It’s my pleasure.","Take your time.","Congratulations."],0);
+q(2,-1,"Which is the most suitable opening for an email to your principal, Mr. Hadi?",["Hey, Sir!","Dear Mr. Hadi,","Yo Mr. Hadi","Hi bro,"],1);
+q(2,-1,"“I wish I could help, but I’m tied up this afternoon.” The speaker is ...",["physically bound","very busy","angry","lost"],1);
+q(2,-1,"A: You look pale. Are you OK?<br>B: Honestly, I feel under the weather.<br>B means that he is ...",["outside in the rain","slightly ill","very happy","bored"],1);
+q(2,-1,"“Could you pass the salt?” is actually ...",["a question about ability","a polite request","a complaint","an order to leave"],1);
+q(2,-1,"“With all due respect, I disagree with the proposal.” The tone is ...",["rude and angry","polite but firm","joking","hesitant and shy"],1);
+q(2,-1,"Which closing is appropriate for a formal letter to “Dear Sir”?",["See ya!","Yours faithfully,","Bye-bye,","Take care, dude"],1);
+q(2,-1,"A: Thanks for lending me your notes.<br>B: ___",["Don’t mention it.","Good luck.","Me too.","I’m sorry to hear that."],0);
+q(3,-1,"Arrange into a logical order:<br>1. As a result, many people lost their jobs.<br>2. Factories closed because of the crisis.<br>3. The economy suffered badly last year.",["3 – 2 – 1","2 – 3 – 1","1 – 2 – 3","3 – 1 – 2"],0);
+q(3,-1,"She is allergic ___ peanuts.",["to","with","of","at"],0);
+q(3,-1,"He insisted ___ paying the bill.",["in","on","at","for"],1);
+q(3,-1,"The teacher congratulated him ___ winning the contest.",["for","on","with","about"],1);
+q(3,-1,"We are fed up ___ the noise from the street.",["of","with","from","by"],1);
+q(3,-1,"Find the incorrect part: “Neither of the students <b>(A)</b> have finished <b>(B)</b> their homework <b>(C)</b> yet <b>(D)</b>.”",["have finished (A)","their homework (B)","yet (C)","No error"],0);
+q(3,-1,"How many errors are in this sentence? “She have two brother and a sister.”",["1","2","3","4"],1);
+q(3,-1,"All students in the club must attend on Friday. Rani is in the club. Therefore, ...",["Rani may skip Friday","Rani must attend on Friday","Rani leaves the club","Friday is cancelled"],1);
+q(3,-1,"Which sentence is grammatically correct?",["He is looking forward to see you.","He is looking forward to seeing you.","He is looking forward see you.","He looks forward for seeing you."],1);
+q(3,-1,"Unscramble: never / have / such / I / seen / a / beautiful / sunset",["I have never seen such a beautiful sunset.","Never I have such seen a beautiful sunset.","I never have seen a such beautiful sunset.","Such a sunset I have beautiful never seen."],0);
+q(3,-1,"The company is ___ the verge of bankruptcy.",["at","on","in","by"],1);
+q(3,-1,"“Despite of the rain, we enjoyed the trip.” The best correction is ...",["Despite the rain, we enjoyed the trip.","In spite the rain, we enjoyed the trip.","Despite of rain, we enjoy the trip.","Although of the rain, we enjoyed the trip."],0);
+P.push("Every morning at five, Pak Darto pushes his cart through the market. He sells fried tempeh to workers on their way to the factory. When the price of cooking oil doubled, he did not raise his prices; instead, he made each piece slightly smaller. “My customers are like family,” he says. “I can’t let them go hungry.”","Tourists flock to the island of Komodo to see the giant lizards. However, the growing number of visitors has damaged the coral and disturbed the animals’ habitat. Therefore, officials now limit the number of visitors each day. Some tour operators object, saying the rule will hurt their income, while conservationists argue that protecting nature secures tourism in the long run.");
+q(0,-1,"The manager gave a ___ answer, so nobody knew what she meant.",["vague","precise","honest","loud"],0);
+q(0,-1,"She ___ TV when the lights went out.",["watched","was watching","has watched","watches"],1);
+q(0,-1,"The synonym of “reluctant” is ...",["unwilling","eager","ready","fast"],0);
+q(0,-1,"The antonym of “generous” is ...",["kind","selfish","rich","polite"],1);
+q(0,-1,"I’ll call you as soon as I ___ home.",["get","will get","got","am getting"],0);
+q(0,-1,"The man ___ lives next door is a pilot.",["who","whom","whose","where"],0);
+q(0,-1,"___ he was tired, he finished the report.",["Even though","Because","Unless","So that"],0);
+q(0,-1,"By next year, he ___ here for ten years.",["works","will have worked","has worked","worked"],1);
+q(0,-1,"The new law will ___ in January.",["take effect","take place of","make effect","do effect"],0);
+q(0,-1,"This is the book ___ I told you about.",["which","where","whose","what"],0);
+q(0,-1,"Not only ___ the exam, but she also won a prize.",["she passed","did she pass","she did pass","passed she"],1);
+q(0,-1,"The synonym of “enormous” is ...",["tiny","huge","weak","calm"],1);
+q(0,-1,"I’d rather you ___ here tonight.",["stay","stayed","will stay","staying"],1);
+q(0,-1,"He is the student ___ essay won first prize.",["who","whose","which","whom"],1);
+q(0,-1,"Neither the teacher nor the students ___ present.",["was","were","is","has been"],1);
+q(0,-1,"The antonym of “reduce” is ...",["increase","decrease","lower","shrink"],0);
+q(1,2,"What is the main idea of the text?",["Cooking oil is cheap","Pak Darto keeps his prices low because he cares about his customers","Factories pay workers well","Tempeh is unhealthy"],1);
+q(1,2,"Why did Pak Darto make each piece smaller?",["To avoid raising prices","To save time","To attract tourists","Because he was tired"],0);
+q(1,2,"“My customers are like family” is a ...",["simile showing he feels close to them","fact about his relatives","complaint","warning"],0);
+q(1,2,"We can infer that Pak Darto is ...",["greedy","caring","lazy","angry"],1);
+q(1,2,"Who are Pak Darto’s customers?",["Tourists","Teachers","Factory workers","Farmers"],2);
+q(1,3,"Why do officials limit visitors to Komodo?",["Visitors damaged coral and disturbed animals’ habitat","The lizards left","Tickets were too cheap","The island is closed"],0);
+q(1,3,"“Tourists flock to the island” means tourists ...",["avoid the island","come in large numbers","fly over the island","live on the island"],1);
+q(1,3,"Who thinks the rule will hurt income?",["Conservationists","Officials","Tour operators","Lizards"],2);
+q(1,3,"The text mainly discusses ...",["how to cook lizards","balancing tourism and nature protection","coral colours","airline prices"],1);
+q(1,3,"Conservationists believe that ...",["protecting nature secures tourism in the long run","tourism should be doubled","the island should be sold","the rule is useless"],0);
+q(1,-1,"“He’s on cloud nine.” He is ...",["very happy","flying","confused","sick"],0);
+q(1,-1,"“I’m going to hit the sack.” The speaker will ...",["fight someone","go to bed","buy a bag","do exercise"],1);
+q(1,-1,"“Don’t count your chickens before they hatch.” It means ...",["don’t assume success too early","don’t keep poultry","count carefully","be generous"],0);
+q(1,-1,"“The wind whispered through the trees.” This is an example of ...",["personification","simile","hyperbole","irony"],0);
+q(1,-1,"“She is as busy as a bee.” This is a ...",["metaphor","simile","personification","fact"],1);
+q(1,-1,"“Break a leg!” is said to wish someone ...",["injury","good luck","a holiday","patience"],1);
+q(2,-1,"A: Could I borrow your dictionary?<br>B: ___",["Sure, here you are.","You’re welcome.","Same to you.","Not bad."],0);
+q(2,-1,"A: Congratulations on winning the contest!<br>B: ___",["Thank you. I’m so happy.","I’m sorry to hear that.","Never mind.","Please do."],0);
+q(2,-1,"“Well, that’s just brilliant,” he said after spilling coffee on his shirt. The tone is ...",["ironic","proud","joyful","grateful"],0);
+q(2,-1,"Which is the most formal request?",["Gimme the file.","Pass the file.","I would be grateful if you could send me the file.","Send file now."],2);
+q(2,-1,"A: Shall we go to the cinema tonight?<br>B: I’d love to, but I have an exam tomorrow.<br>B is ...",["politely declining","accepting","complaining","asking for money"],0);
+q(2,-1,"A: Do you mind if I sit here?<br>B: ___",["Go ahead.","Yes, you are right.","I’m fine, thanks.","It’s my fault."],0);
+q(2,-1,"“It’s not that I don’t like your idea, it’s just a bit risky.” The speaker is ...",["softening criticism","shouting","praising","changing the subject"],0);
+q(2,-1,"A: I’m afraid I can’t come to your party.<br>B: ___",["That’s a pity. Maybe next time.","Congratulations!","You’re welcome.","Me neither, thanks."],0);
+q(2,-1,"Which is appropriate in a casual message to a close friend?",["Dear Sir or Madam, I hereby inform you...","Hi Sara, guess what happened!","To whom it may concern,","Respectfully yours,"],1);
+q(2,-1,"“You call that a clean room?” The tone is ...",["praising","sarcastic and critical","curious","grateful"],1);
+q(2,-1,"A: What time does the train leave?<br>B: Sorry, I’m not sure. You’d better ask at the counter.<br>B ...",["doesn’t know and suggests an alternative","knows exactly","is angry","refuses to talk"],0);
+q(2,-1,"Which is a polite way to refuse an invitation?",["No way.","Thanks for inviting me, but I’m afraid I can’t make it.","I won’t come.","Not interested."],1);
+q(2,-1,"A: Happy birthday!<br>B: ___",["Thanks a lot!","Good luck!","Excuse me.","Not at all."],0);
+q(2,-1,"A: Would you care for some tea?<br>B: ___",["Yes, please.","Yes, I do care.","You’re welcome.","Never mind."],0);
+q(2,-1,"“He said it with a smile, but his eyes said otherwise.” This suggests ...",["his words and real feelings did not match","he was very happy","he was blind","he told the truth"],0);
+q(2,-1,"A: Excuse me, where is the post office?<br>B: It’s just around the corner.<br>The post office is ...",["very close","very far","closed","unknown"],0);
+q(3,-1,"Arrange logically:<br>1. Therefore, they should rest enough.<br>2. Teenagers need about eight hours of sleep.<br>3. Lack of sleep makes it hard to concentrate.",["2 – 3 – 1","3 – 2 – 1","1 – 2 – 3","2 – 1 – 3"],0);
+q(3,-1,"She is good ___ mathematics.",["at","in","on","with"],0);
+q(3,-1,"I’m looking forward ___ the holiday.",["to","for","at","on"],0);
+q(3,-1,"He apologised ___ being late.",["for","of","about to","at"],0);
+q(3,-1,"The cat is afraid ___ dogs.",["of","from","with","to"],0);
+q(3,-1,"How many errors are in this sentence? “Yesterday he go to school and meet his teacher.”",["1","2","3","4"],1);
+q(3,-1,"Find the incorrect part: “If I will see him <b>(A)</b>, I will tell him <b>(B)</b> that you called <b>(C)</b> yesterday <b>(D)</b>.”",["will see (A)","will tell (B)","called (C)","yesterday (D)"],0);
+q(3,-1,"No bird is a mammal. A bat is a mammal. Therefore, ...",["a bat is a bird","a bat is not a bird","all birds fly","some mammals are birds"],1);
+q(3,-1,"Unscramble: to / hard / is / she / the / working / win / prize",["She is working hard to win the prize.","She working is hard win to the prize.","Hard she is the prize to working win.","To win she hard is working the prize."],0);
+q(3,-1,"Which sentence is correct?",["The number of students have increased.","The number of students has increased.","The number of student have increased.","The numbers of students has increased."],1);
+q(3,-1,"He prefers tea ___ coffee.",["to","than","from","over to"],0);
+q(3,-1,"“Their going to buy a new car next week.” The best correction is ...",["They’re going to buy a new car next week.","There going to buy a new car next week.","Their going buy a new car next week.","They going to buying a new car next week."],0);
+q(3,-1,"Which sentence uses a wrong preposition?",["She arrived in Jakarta yesterday.","He arrived at the station on time.","We arrived at Bali last week.","They arrived home late."],2);
+q(3,-1,"“Because the road was flooded, the bus was late.” What is the cause?",["The bus was late","The road was flooded","The driver slept","The bus was new"],1);
+q(3,-1,"Arrange logically:<br>1. She quickly opened the door.<br>2. Someone knocked at the door.<br>3. A smiling postman stood there.",["2 – 1 – 3","1 – 2 – 3","3 – 2 – 1","1 – 3 – 2"],0);
+q(3,-1,"“He suggested me to see a doctor.” The best correction is ...",["He suggested that I see a doctor.","He suggested me seeing a doctor.","He suggested to me see a doctor.","He suggested me see doctor."],0);
+P.push("When Maya moved to a new school, she felt like a fish out of water. Everyone seemed to know each other, and she ate lunch alone for a week. Then a classmate named Tari noticed her and invited her to join the drama club. Slowly, Maya’s shyness melted away, and by the end of the term, she was leading the group’s morning warm-ups.","In the past, many villagers burned rice straw after harvest. The smoke caused breathing problems and made the sky grey for days. Now, an agricultural cooperative collects the straw and turns it into animal feed and compost. This not only cleans the air but also gives farmers extra income.");
+q(0,-1,"The audience gave a ___ applause after the performance.",["thunderous","silent","weak","bitter"],0);
+q(0,-1,"I ___ my homework before I watched TV last night.",["had finished","have finished","finish","am finishing"],0);
+q(0,-1,"The synonym of “abandon” is ...",["desert","keep","adopt","repair"],0);
+q(0,-1,"The antonym of “fragile” is ...",["delicate","sturdy","thin","cheap"],1);
+q(0,-1,"The book ___ cover is red is mine.",["who","which","whose","whom"],2);
+q(0,-1,"He speaks English ___ he were a native speaker.",["as if","unless","although","so that"],0);
+q(0,-1,"___ you study hard, you won’t pass the exam.",["Unless","If","Because","Although"],0);
+q(0,-1,"The report ___ by the committee next week.",["will be submitted","will submit","submitted","is submit"],0);
+q(0,-1,"She is ___ than her sister.",["more tall","taller","tallest","the most tall"],1);
+q(0,-1,"His explanation was so ___ that everyone understood it immediately.",["lucid","confusing","lengthy","bitter"],0);
+q(0,-1,"The city, ___ is famous for batik, attracts many tourists.",["which","who","whom","what"],0);
+q(0,-1,"I look forward to ___ from you.",["hear","hearing","heard","be heard"],1);
+q(0,-1,"She suggested ___ a taxi.",["take","taking","to take","took"],1);
+q(0,-1,"The synonym of “postpone” is ...",["delay","cancel","begin","attend"],0);
+q(0,-1,"If I were you, I ___ apologise.",["will","would","had","am"],1);
+q(0,-1,"The more you practise, ___ you become.",["the better","better","the best","more good"],0);
+q(1,4,"What does “a fish out of water” mean in the text?",["Maya felt uncomfortable in an unfamiliar place","Maya loves swimming","Maya was hungry","Maya was sick"],0);
+q(1,4,"What changed Maya’s situation?",["She moved again","Tari invited her to join the drama club","She stopped eating lunch","The teacher punished her"],1);
+q(1,4,"“Maya’s shyness melted away” means her shyness ...",["gradually disappeared","turned into water","got worse","was punished"],0);
+q(1,4,"What happened first in the text?",["She led warm-ups","She joined the drama club","She ate lunch alone","She met Tari"],2);
+q(1,4,"The text shows that Maya became ...",["more confident","more lonely","more angry","more careless"],0);
+q(1,5,"Why was burning rice straw a problem?",["It made the soil too wet","The smoke caused breathing problems","It attracted insects","It was expensive"],1);
+q(1,5,"What does the cooperative do with the straw?",["Burns it","Sells it abroad","Turns it into feed and compost","Throws it away"],2);
+q(1,5,"What are the two benefits of the new method?",["Cleaner air and extra income","Less rain and more rice","Cheaper oil and clean water","New jobs and new roads"],0);
+q(1,5,"The writer’s main purpose is to ...",["inform readers about a beneficial change","ask for donations","entertain with a funny story","criticise farmers"],0);
+q(1,5,"“Not only … but also” is used to ...",["add a second benefit","show contrast","give a reason","show time"],0);
+q(1,-1,"“We go to the beach once in a blue moon.” They go ...",["every day","rarely","at night","only in summer"],1);
+q(1,-1,"“I had to bite the bullet and see the dentist.” It means he ...",["was hungry","endured something unpleasant","bought a gun","ate quickly"],1);
+q(1,-1,"“The ball is in your court.” It means ...",["it is your turn to decide","you must play tennis","you lost the ball","the game is over"],0);
+q(1,-1,"“She has a heart of gold.” She is ...",["rich","very kind","greedy","sick"],1);
+q(1,-1,"“Time flies when you’re having fun.” “Time flies” means time ...",["has wings","passes quickly","stops","is wasted"],1);
+q(1,-1,"“I’ve told you a million times!” is an example of ...",["hyperbole","simile","personification","irony"],0);
+q(2,-1,"A: Can I take a message?<br>B: ___",["Yes, please tell him Rudi called.","You’re welcome.","Happy birthday.","I don’t take it."],0);
+q(2,-1,"A: I failed the test.<br>B: ___",["Congratulations!","I’m sorry to hear that. Don’t give up.","That’s wonderful.","Me too, thank you."],1);
+q(2,-1,"“Oh, you finally decided to show up.” The tone is ...",["sarcastic and annoyed","grateful","shy","admiring"],0);
+q(2,-1,"Which sentence is informal?",["I would like to enquire about the course.","Kindly find the file attached.","Wanna grab lunch?","We regret to inform you of the delay."],2);
+q(2,-1,"A: Could you give me a hand with these boxes?<br>B: ___",["Sure, no problem.","Yes, it’s a hand.","Congratulations.","Never mind the hand."],0);
+q(2,-1,"A: How do you like my new haircut?<br>B: It suits you.<br>B is ...",["complaining","complimenting","asking","refusing"],1);
+q(2,-1,"“I don’t suppose you could lend me ten thousand rupiah?” The speaker is ...",["demanding","asking tentatively and politely","offering money","refusing"],1);
+q(2,-1,"A: Is this seat taken?<br>B: ___",["No, please go ahead.","Yes, I take it.","It’s a chair.","You are welcome."],0);
+q(2,-1,"“Thank you very much indeed for your kind help.” The best formal reply is ...",["No big deal.","It was my pleasure.","Whatever.","Sure thing, dude."],1);
+q(2,-1,"A: I can’t find my wallet!<br>B: ___",["Calm down. Let’s retrace your steps.","Happy birthday!","It’s not my wallet.","Good for you."],0);
+q(2,-1,"A: I think we should start the project now.<br>B: I couldn’t agree more.<br>B ...",["disagrees","completely agrees","is confused","refuses"],1);
+q(2,-1,"Which is most appropriate for a complaint to a restaurant manager?",["Your food is garbage!","I’m afraid the soup was cold. Could you please replace it?","Fix this now or else.","Whatever."],1);
+q(2,-1,"A: What a lovely dress!<br>B: ___",["Thank you. It’s a gift from my aunt.","Yes, it is lovely, you too.","Don’t mention it.","I’m sorry."],0);
+q(2,-1,"“Well, if you insist...” The tone shows ...",["reluctant agreement","strong refusal","excitement","anger"],0);
+q(2,-1,"Which is a suitable ending for an informal email to a friend?",["Yours faithfully,","Write back soon!","Respectfully submitted,","Yours truly, Sir"],1);
+q(2,-1,"A: Let’s meet at five.<br>B: Make it half past, I have a class.<br>B ...",["suggests changing the time","cancels the meeting","agrees to five","asks about the class"],0);
+q(3,-1,"Arrange logically:<br>1. Finally, serve it with rice.<br>2. First, cut the vegetables.<br>3. Next, stir-fry them with garlic.",["2 – 3 – 1","1 – 2 – 3","3 – 2 – 1","2 – 1 – 3"],0);
+q(3,-1,"He is responsible ___ the project.",["for","of","to","at"],0);
+q(3,-1,"She takes pride ___ her work.",["in","on","of","at"],0);
+q(3,-1,"The accident resulted ___ serious injuries.",["in","to","with","by"],0);
+q(3,-1,"I don’t approve ___ cheating.",["of","for","to","at"],0);
+q(3,-1,"How many errors are in this sentence? “She don’t has any pets.”",["1","2","3","4"],1);
+q(3,-1,"Find the incorrect part: “Despite <b>(A)</b> he was tired <b>(B)</b>, he kept <b>(C)</b> working <b>(D)</b>.”",["Despite (A)","was tired (B)","kept (C)","working (D)"],0);
+q(3,-1,"All roses are flowers. Some flowers fade quickly. Which conclusion is certain?",["All roses fade quickly","Roses are flowers","All flowers are roses","No flowers are roses"],1);
+q(3,-1,"Unscramble: was / by / the / window / broken / boy / the",["The window was broken by the boy.","The boy was broken by the window.","By the window the boy broken was.","Was the window the boy broken by."],0);
+q(3,-1,"Which sentence is correct?",["Neither of them are ready.","Neither of them is ready.","Neither of them were ready.","Neither of they is ready."],1);
+q(3,-1,"He is accused ___ stealing.",["of","for","with","by"],0);
+q(3,-1,"“She suggested to go to the beach.” The best correction is ...",["She suggested going to the beach.","She suggested me go the beach.","She suggest to going to the beach.","She suggested for going beach."],0);
+q(3,-1,"Which sentence has an error?",["I have lived here for five years.","I have lived here since 2020.","I have lived here since five years.","I lived here five years ago."],2);
+q(3,-1,"If it rains, the match is cancelled. The match was not cancelled. So ...",["it rained","it did not rain","the match was moved","nobody came"],1);
+q(3,-1,"Arrange logically:<br>1. The fire spread quickly.<br>2. A cigarette fell onto dry grass.<br>3. Firefighters arrived and put it out.",["2 – 1 – 3","1 – 2 – 3","3 – 1 – 2","2 – 3 – 1"],0);
+q(3,-1,"“Me and him goes to school together.” The best correction is ...",["He and I go to school together.","Me and he go to school together.","Him and I goes to school together.","He and me go to school together."],0);
+P.push("Every Saturday, Bu Sari opens her small library on the porch of her house. Children from the neighbourhood borrow books, read aloud to one another, and sometimes bring homemade snacks to share. When a flood destroyed half of her books last year, parents and former students quickly donated new ones. Bu Sari says the library has taught her that a good deed rarely stays alone.","Scientists have found that plants grown near busy roads often have smaller leaves. The dust and exhaust fumes block sunlight and clog the tiny openings through which leaves breathe. Consequently, the plants make less food and grow slowly. Planting a thick row of trees along the roadside can reduce this damage because the trees trap much of the dust.");
+q(0,-1,"The detective found a ___ clue that finally solved the case.",["crucial","trivial","foolish","humorous"],0);
+q(0,-1,"She ___ in London for three years before she moved to Paris.",["had lived","has lived","lives","is living"],0);
+q(0,-1,"The synonym of “brave” is ...",["courageous","timid","lazy","rude"],0);
+q(0,-1,"The antonym of “ancient” is ...",["modern","old","historic","famous"],0);
+q(0,-1,"The teacher ___ I respect most is Mrs. Rina.",["whom","whose","which","where"],0);
+q(0,-1,"___ the heavy traffic, we arrived on time.",["Despite","Because","Unless","Whereas"],0);
+q(0,-1,"He ran fast ___ he could catch the bus.",["so that","although","unless","but"],0);
+q(0,-1,"The window ___ by someone last night.",["was broken","broke","is broken","has broken"],0);
+q(0,-1,"This is ___ interesting book I have ever read.",["the most","more","most","the more"],0);
+q(0,-1,"The company decided to ___ its old machines with new ones.",["replace","repeat","reply","refuse"],0);
+q(0,-1,"I wish I ___ a bird so I could fly.",["am","were","will be","have been"],1);
+q(0,-1,"She asked me where ___.",["I was going","was I going","I am going to","did I go"],0);
+q(0,-1,"The synonym of “rapid” is ...",["swift","slow","steady","calm"],0);
+q(0,-1,"Either you or I ___ responsible for the mistake.",["am","is","are","be"],0);
+q(0,-1,"Hardly ___ the station when the train left.",["had we reached","we had reached","we reached","did we reach"],0);
+q(0,-1,"The antonym of “optimistic” is ...",["hopeful","pessimistic","cheerful","confident"],1);
+q(1,6,"What does Bu Sari do every Saturday?",["Sells books","Opens a small library on her porch","Teaches at school","Visits flood areas"],1);
+q(1,6,"Why did parents and former students donate books?",["To replace books destroyed by the flood","To clean the porch","To win a prize","To open a new school"],0);
+q(1,6,"“A good deed rarely stays alone” means ...",["good deeds often inspire more kindness","kind people are lonely","deeds are hard to do","people avoid good deeds"],0);
+q(1,6,"Which is NOT mentioned as an activity at the library?",["Borrowing books","Reading aloud","Sharing snacks","Selling books"],3);
+q(1,6,"The main idea of the text is ...",["a community library grows through kindness and sharing","floods are dangerous","snacks are important","children dislike reading"],0);
+q(1,7,"Why do plants near busy roads have smaller leaves?",["Dust and fumes block sunlight and clog leaf openings","They get too much water","They are planted too late","Birds eat them"],0);
+q(1,7,"The word “Consequently” introduces a ...",["result","contrast","example","question"],0);
+q(1,7,"Why do trees along the roadside help?",["They trap much of the dust","They stop the traffic","They make the road wider","They give more sunlight"],0);
+q(1,7,"The best title for the text is ...",["How Road Pollution Harms Plants","Types of Leaves","Building Better Roads","A Garden Tour"],0);
+q(1,7,"We can infer that plants in a quiet garden would probably ...",["grow healthier","have smaller leaves","die quickly","stop breathing"],0);
+q(1,-1,"“That bag costs an arm and a leg.” The bag is ...",["dangerous","very expensive","very old","heavy"],1);
+q(1,-1,"“He burns the midnight oil before exams.” He ...",["studies late at night","cooks at midnight","wastes oil","sleeps early"],0);
+q(1,-1,"“The early bird catches the worm.” It means ...",["birds eat early","those who start early are likely to succeed","worms are dangerous","mornings are cold"],1);
+q(1,-1,"“His words were a dagger to my heart.” This is a ...",["metaphor","simile","literal statement","question"],0);
+q(1,-1,"“Her smile lit up the room.” It means her smile ...",["broke the lamp","made everyone feel cheerful","was very bright literally","scared people"],1);
+q(1,-1,"“Please keep an eye on my bag.” It means ...",["watch it carefully","hide it","open it","take it away"],0);
+q(2,-1,"A: May I speak to Mr. Dani, please?<br>B: ___",["Hold on, please. I’ll put you through.","You’re welcome.","I’m fine.","Never mind."],0);
+q(2,-1,"A: Sorry I’m late.<br>B: ___",["That’s all right. We’ve just started.","Congratulations.","Thank you very much.","Not at all, you’re early."],0);
+q(2,-1,"“Thanks a lot for waking me up at five on my day off.” The tone is ...",["sincerely grateful","sarcastic","cheerful","respectful"],1);
+q(2,-1,"Which is the most polite?",["Move.","Can you move?","Excuse me, would you mind moving a little?","Get out of the way."],2);
+q(2,-1,"A: Would you like some more cake?<br>B: ___",["No, thank you. I’m full.","No, you are welcome.","Yes, I did.","Not at all, sorry."],0);
+q(2,-1,"A: I’m thinking of joining the swimming club.<br>B: That’s a great idea!<br>B is ...",["discouraging","encouraging","complaining","refusing"],1);
+q(2,-1,"“I hate to bother you, but could I ask a favour?” The phrase “I hate to bother you” is used to ...",["soften a request","refuse a request","end a talk","give an order"],0);
+q(2,-1,"A: Do you think it’ll rain?<br>B: I doubt it.<br>B thinks that ...",["it will rain","it probably won’t rain","it is raining","it rained"],1);
+q(2,-1,"“I am writing to apply for the position of assistant.” This sentence is typical of ...",["a job application letter","a birthday card","a diary","a text to a friend"],0);
+q(2,-1,"A: Cheer up! Things will get better.<br>A is ...",["comforting B","blaming B","ignoring B","laughing at B"],0);
+q(2,-1,"A: Why don’t we have a picnic on Sunday?<br>B: ___",["That sounds like fun.","I’m sorry to hear that.","You’re welcome.","Never mind."],0);
+q(2,-1,"“Not bad at all!” said after tasting a cake. The speaker means the cake is ...",["terrible","quite good","too sweet","burnt"],1);
+q(2,-1,"A: Could you tell me the way to the station?<br>B: ___",["Go straight and turn left at the second corner.","Yes, I could tell.","It’s my pleasure to tell.","By train, please."],0);
+q(2,-1,"“No offence, but your presentation was a little long.” The speaker is ...",["praising","criticising politely","thanking","inviting"],1);
+q(2,-1,"A: Thank you for the lovely gift!<br>B: ___",["I’m glad you like it.","Same to you.","Excuse me.","Good idea."],0);
+q(2,-1,"Which is used to end a phone call politely?",["Thank you for calling. Goodbye.","Hang up now.","Who is this?","Speaking."],0);
+q(3,-1,"Arrange logically:<br>1. As a result, the river became clean again.<br>2. The villagers stopped throwing garbage into it.<br>3. The river was once very dirty.",["3 – 2 – 1","1 – 2 – 3","2 – 3 – 1","3 – 1 – 2"],0);
+q(3,-1,"She is jealous ___ her sister’s success.",["of","with","at to","for"],0);
+q(3,-1,"He succeeded ___ passing the test.",["in","on","at","to"],0);
+q(3,-1,"The movie is based ___ a true story.",["on","in","at","from"],0);
+q(3,-1,"I’m tired ___ waiting for the bus.",["of","to","for","at"],0);
+q(3,-1,"How many errors are in this sentence? “Yesterday, we goes to the zoo and see many animal.”",["1","2","3","4"],2);
+q(3,-1,"Find the incorrect part: “The news <b>(A)</b> are <b>(B)</b> very surprising <b>(C)</b> to everyone <b>(D)</b>.”",["The news (A)","are (B)","very surprising (C)","to everyone (D)"],1);
+q(3,-1,"Only students with a card may enter the library. Budi entered the library. Therefore, ...",["Budi has a card","Budi has no card","Budi is a teacher","The library is closed"],0);
+q(3,-1,"Unscramble: has / lived / since / she / here / childhood / her",["She has lived here since her childhood.","She lived has here since childhood her.","Since she here has lived her childhood.","Her childhood has she lived since here."],0);
+q(3,-1,"Which sentence is correct?",["He asked me what was my name.","He asked me what my name was.","He asked me what is my name was.","He asked me what my name were."],1);
+q(3,-1,"She is married ___ a doctor.",["to","with","by","at"],0);
+q(3,-1,"“I am agree with you.” The best correction is ...",["I agree with you.","I am agreeing with you.","I agreed to you with.","I am agreed with you."],0);
+q(3,-1,"Which sentence has an error?",["He is interested in music.","She is good at drawing.","They are afraid from spiders.","We are proud of our team."],2);
+q(3,-1,"Dina is taller than Eka. Eka is taller than Fira. Who is the shortest?",["Dina","Eka","Fira","Cannot be known"],2);
+q(3,-1,"Arrange logically:<br>1. He felt nervous before the speech.<br>2. The audience clapped warmly.<br>3. Yet once he started speaking, his nerves vanished.",["1 – 3 – 2","1 – 2 – 3","3 – 1 – 2","2 – 1 – 3"],0);
+q(3,-1,"“Despite of he is rich, he never help nobody.” The best correction is ...",["Although he is rich, he never helps anybody.","Despite he is rich, he never helps nobody.","In spite he rich, he never help anybody.","Although of rich, he never helps anybody."],0);
+P.push("Ravi had always dreamed of being a pilot, but his eyesight was poor. Instead of giving up, he studied aircraft engineering. Today he works at an airport, making sure every plane is safe to fly. “I may not sit in the cockpit,” he says, “but every passenger trusts me with their lives.”","Although fast food is cheap and convenient, doctors warn that eating it too often can lead to obesity. Many burgers and fried chicken contain large amounts of salt, sugar, and fat. In contrast, home-cooked meals allow people to control what goes into their food. Therefore, health experts encourage families to cook together at least three times a week.");
+q(0,-1,"The villagers showed great ___ when they helped the stranded travellers.",["hostility","hospitality","ignorance","laziness"],1);
+q(0,-1,"While I ___ dinner, the phone rang.",["cooked","have cooked","was cooking","cook"],2);
+q(0,-1,"The synonym of “vital” is ...",["minor","empty","essential","rare"],2);
+q(0,-1,"The antonym of “temporary” is ...",["brief","permanent","short","quick"],1);
+q(0,-1,"The boy ___ father is a chef won the cooking contest.",["who","which","whom","whose"],3);
+q(0,-1,"I was tired; ___, I kept working.",["therefore","because","so","nevertheless"],3);
+q(0,-1,"She won’t go out ___ it stops raining.",["unless","until","although","since"],1);
+q(0,-1,"English ___ in many countries.",["speaks","spoke","is speak","is spoken"],3);
+q(0,-1,"He is the ___ student in our class.",["more diligent","diligenter","most diligent","diligentest"],2);
+q(0,-1,"She has ___ money that she can buy anything.",["so much","such","too much","very"],0);
+q(0,-1,"If it ___ tomorrow, we will cancel the trip.",["will rain","rains","rained","would rain"],1);
+q(0,-1,"The synonym of “conceal” is ...",["reveal","show","admit","hide"],3);
+q(0,-1,"The students ___ have finished their tasks may go home.",["whom","whose","what","who"],3);
+q(0,-1,"I’m used to ___ up early.",["get","getting","got","gets"],1);
+q(0,-1,"He asked if I ___ the answer.",["know","knew","known","knowing"],1);
+q(0,-1,"The antonym of “victory” is ...",["success","triumph","defeat","win"],2);
+q(1,8,"What is the main idea of the text?",["Ravi found another way to work in aviation","Ravi hates airports","Pilots have poor eyesight","Engineering is easy"],0);
+q(1,8,"Why did Ravi not become a pilot?",["He was afraid of flying","His eyesight was poor","He failed engineering","He disliked planes"],1);
+q(1,8,"“Instead of giving up” shows that Ravi was ...",["lazy","jealous","determined","careless"],2);
+q(1,8,"“Every passenger trusts me with their lives” implies that his job carries ...",["great responsibility","little importance","no risk","high pay only"],0);
+q(1,8,"We can infer that Ravi ...",["regrets his job","takes safety seriously","flies planes daily","dislikes passengers"],1);
+q(1,9,"Why do doctors warn about eating fast food too often?",["It can lead to obesity","It is too expensive","It takes too long","It has no taste"],0);
+q(1,9,"“In contrast” introduces ...",["a similar idea","a different idea","an example","a result"],1);
+q(1,9,"What do health experts encourage?",["Eating out daily","Skipping meals","Cooking together at least three times a week","Buying more burgers"],2);
+q(1,9,"Which statement is TRUE according to the text?",["Fast food is cheap and convenient","Home-cooked meals are expensive","Fast food has no salt","Doctors recommend fried chicken"],0);
+q(1,9,"The tone of the text is ...",["angry and rude","humorous","informative and advisory","sad"],2);
+q(1,-1,"“Losing my job was a blessing in disguise.” It means ...",["it looked bad but turned out good","it was a religious event","it was a secret","it was a costume"],0);
+q(1,-1,"“The elephant in the room” refers to ...",["a large animal","an obvious problem nobody wants to discuss","a heavy object","a loud noise"],1);
+q(1,-1,"“She is drowning in homework.” This means she ...",["is swimming","has too much homework","lost her homework","enjoys homework"],1);
+q(1,-1,"“Actions speak louder than words.” It means ...",["talk loudly","what you do matters more than what you say","be quiet","actors are noisy"],1);
+q(1,-1,"“The test was a breeze.” The test was ...",["windy","very difficult","very easy","cancelled"],2);
+q(1,-1,"“He spilled the beans about the surprise party.” He ...",["cooked beans","accidentally revealed a secret","cleaned the party","ate too much"],1);
+q(2,-1,"A: I’m afraid Rina is out right now. Would you like to leave a message?<br>B: ___",["Yes, I do the message.","It’s my pleasure.","Congratulations.","No, thanks. I’ll call back later."],3);
+q(2,-1,"A: I’ve just won a scholarship!<br>B: ___",["That’s fantastic news! Well done!","I’m sorry to hear that.","Never mind.","Not at all."],0);
+q(2,-1,"“I suppose it’s acceptable.” The speaker sounds ...",["enthusiastic","unenthusiastic","furious","delighted"],1);
+q(2,-1,"Which is the polite way to get a stranger’s attention?",["Hey you!","Oi, lady!","Yo!","Excuse me, Madam,"],3);
+q(2,-1,"A: Could you keep your voice down, please?<br>B: ___",["Sorry, I didn’t realise I was so loud.","You’re welcome.","Same to you.","Of course not, I’ll shout more."],0);
+q(2,-1,"A: Why the long face?<br>B: I didn’t pass the audition.<br>A is asking ...",["why B’s face is long","why B looks sad","why B is laughing","why B is late"],1);
+q(2,-1,"“With the greatest respect, I think you’re mistaken.” The speaker wants to ...",["agree enthusiastically","disagree politely","say goodbye","ask for help"],1);
+q(2,-1,"A: Do you fancy a walk?<br>B: Why not?<br>B ...",["refuses","agrees","is angry","is confused"],1);
+q(2,-1,"A: Let me carry that for you.<br>B: That’s very kind of you.<br>B is ...",["thanking A","refusing help","complaining","asking directions"],0);
+q(2,-1,"“You must be joking!” The speaker shows ...",["disbelief","agreement","boredom","gratitude"],0);
+q(2,-1,"A: I’d like to book a table for four at seven.<br>B: ___",["Sure, here’s my table.","Certainly, may I have your name, please?","You’re welcome.","No, I don’t book."],1);
+q(2,-1,"“Go ahead, I’m all ears.” The speaker is ...",["showing off his ears","ready to listen carefully","unable to hear","bored"],1);
+q(2,-1,"A: Sorry to keep you waiting.<br>B: ___",["Yes, please wait.","Good luck.","Not at all. I’ve only just arrived.","Don’t worry, I’m late."],2);
+q(2,-1,"Which is a suitable closing sentence in a formal letter?",["See you, mate!","I look forward to hearing from you.","Write soon, buddy!","Later!"],1);
+q(2,-1,"A: My grandfather passed away last week.<br>B: ___",["Congratulations!","I’m so sorry for your loss.","That’s great news.","How nice!"],1);
+q(2,-1,"“Frankly speaking, I don’t like the plan.” “Frankly speaking” signals ...",["a lie","a joke","a question","an honest opinion"],3);
+q(3,-1,"Arrange logically:<br>1. That is why we should save water.<br>2. Clean water is becoming scarce in many areas.<br>3. Every drop wasted today may be needed tomorrow.",["1 – 2 – 3","3 – 2 – 1","2 – 1 – 3","2 – 3 – 1"],3);
+q(3,-1,"She is fond ___ chocolate.",["with","at","of","to"],2);
+q(3,-1,"He is capable ___ solving the problem.",["of","at","to","for"],0);
+q(3,-1,"We depend ___ our parents.",["at","with","on","for"],2);
+q(3,-1,"She is different ___ her sister.",["from","with","than to","of"],0);
+q(3,-1,"How many errors are in this sentence? “My sister and me was happy because we wins the prize.”",["1","2","3","4"],2);
+q(3,-1,"Find the incorrect part: “Each of the players <b>(A)</b> have <b>(B)</b> a uniform <b>(C)</b>.”",["Each of the players (A)","have (B)","a uniform (C)","No error"],1);
+q(3,-1,"All mammals breathe air. Whales are mammals. Therefore, ...",["whales breathe air","whales are fish","whales cannot swim","all mammals are whales"],0);
+q(3,-1,"Unscramble: the / be / meeting / will / held / tomorrow / morning",["The meeting be held will tomorrow morning.","Tomorrow the meeting will morning be held.","Will be the meeting held tomorrow morning.","The meeting will be held tomorrow morning."],3);
+q(3,-1,"Which sentence is correct?",["Mathematics are my favourite subject.","Mathematics is my favourite subject.","Mathematic is my favourite subject.","Mathematics were my favourite subject."],1);
+q(3,-1,"He is very keen ___ football.",["at","for","on","of"],2);
+q(3,-1,"“She said me that she was tired.” The best correction is ...",["She told me that she was tired.","She said to that she was tired.","She tells me she were tired.","She said me she tired."],0);
+q(3,-1,"Which sentence has an error?",["I enjoy swimming in the morning.","I want to swim in the morning.","I enjoy to swim in the morning.","I like swimming in the morning."],2);
+q(3,-1,"Andi arrived before Beni. Beni arrived before Citra. Who arrived last?",["Andi","Beni","Citra","Cannot be known"],2);
+q(3,-1,"Arrange logically:<br>1. Then he plugged in the charger.<br>2. His phone battery was almost dead.<br>3. Soon the screen lit up again.",["1 – 2 – 3","2 – 1 – 3","3 – 2 – 1","1 – 3 – 2"],1);
+q(3,-1,"“He don’t know where is the library.” The best correction is ...",["He doesn’t know where is the library.","He don’t know where the library is.","He doesn’t know where the library is.","He not know where the library is."],2);
+P.push("The old lighthouse on Cape Rana has not guided a ship for twenty years. Modern boats now use satellite navigation, so the lighthouse seems unnecessary. Yet every summer, thousands of visitors climb its 120 steps to enjoy the view. The local government has decided to keep it open and use the ticket money to repair the building. Thus, something once useful for sailors now helps the community in a new way.","Lina couldn’t sleep. The exam was only hours away, and her mind raced like a train without brakes. She opened her notebook, but the words danced before her eyes. Finally, she closed it, took a deep breath, and told herself, “I’ve done everything I can.” Strangely, a wave of calm washed over her.");
+q(0,-1,"The manager was ___ for his honesty, so everyone trusted him.",["blamed","ignored","admired","punished"],2);
+q(0,-1,"By 2030, scientists ___ a cure for the disease.",["found","will have found","will find","are finding"],1);
+q(0,-1,"The synonym of “scold” is ...",["praise","reprimand","reward","greet"],1);
+q(0,-1,"The antonym of “ascend” is ...",["climb","rise","descend","jump"],2);
+q(0,-1,"The place ___ we met was a small café.",["which","where","whose","who"],1);
+q(0,-1,"___ he is rich, he is not happy.",["Because","Although","So","Unless"],1);
+q(0,-1,"I will lend you the book ___ you return it tomorrow.",["unless","provided that","although","whereas"],1);
+q(0,-1,"A new bridge ___ in our city now.",["is building","builds","is being built","has build"],2);
+q(0,-1,"She sings as ___ as a professional.",["good","well","better","best"],1);
+q(0,-1,"Please ___ your seatbelt before the car moves.",["fasten","freeze","fetch","fold"],0);
+q(0,-1,"If he had known the truth, he ___ angry.",["would be","would have been","will be","was"],1);
+q(0,-1,"He is looking for a job; ___, he applies to many companies.",["otherwise","however","instead","therefore"],3);
+q(0,-1,"The synonym of “genuine” is ...",["fake","authentic","costly","tiny"],1);
+q(0,-1,"The woman ___ I spoke to yesterday is my teacher.",["to who","whom","whose","what"],1);
+q(0,-1,"He made me ___ the room.",["clean","to clean","cleaning","cleaned"],0);
+q(0,-1,"The antonym of “expand” is ...",["grow","shrink","enlarge","extend"],1);
+q(1,10,"Why does the lighthouse seem unnecessary?",["It is too old to climb","Modern boats use satellite navigation","Nobody visits it","It has no light"],1);
+q(1,10,"What do visitors do every summer?",["Repair the building","Guide ships","Climb the steps to enjoy the view","Sell tickets"],2);
+q(1,10,"How will the ticket money be used?",["To repair the building","To buy new boats","To pay sailors","To build a hotel"],0);
+q(1,10,"The word “Thus” introduces a ...",["question","contrast","conclusion","list"],2);
+q(1,10,"The main idea of the text is ...",["sailors need lighthouses","an old lighthouse has found a new purpose","satellites are dangerous","tourism is declining"],1);
+q(1,11,"How did Lina feel at the beginning?",["Calm","Excited","Anxious","Bored"],2);
+q(1,11,"“Her mind raced like a train without brakes” is a ...",["simile showing her thoughts were fast and out of control","literal description of a train","fact about trains","warning"],0);
+q(1,11,"“The words danced before her eyes” suggests that she ...",["was watching a show","could not focus on the words","loved dancing","was reading aloud"],1);
+q(1,11,"What finally calmed Lina?",["A cup of tea","A phone call","Accepting that she had done her best","Her teacher’s words"],2);
+q(1,11,"“A wave of calm washed over her” means ...",["she went swimming","she suddenly felt peaceful","she felt cold","she got wet"],1);
+q(1,-1,"“You hit the nail on the head!” It means you ...",["hurt yourself","said exactly the right thing","made a mistake","built a house"],1);
+q(1,-1,"“It’s just a storm in a teacup.” It means ...",["a big fuss over something small","a serious disaster","a tea party","bad weather"],0);
+q(1,-1,"“He is a walking dictionary.” This is a ...",["simile","literal statement","metaphor meaning he knows many words","question"],2);
+q(1,-1,"“Our plan failed, so we are back to square one.” It means ...",["we start again from the beginning","we won the game","we are near the finish","we changed the place"],0);
+q(1,-1,"“The box is as light as a feather.” This is a ...",["metaphor","personification","simile","fact"],2);
+q(1,-1,"“It is hard to make ends meet these days.” It means it is hard to ...",["tie ropes","earn enough money to live on","meet friends","finish work"],1);
+q(2,-1,"A: How would you like your steak?<br>B: ___",["Medium, please.","You’re welcome.","Yes, I would.","Not at all."],0);
+q(2,-1,"A: I’m really sorry for the mess.<br>B: ___",["Congratulations.","Same to you.","Don’t worry about it. I’ll clean up.","It’s a pity."],2);
+q(2,-1,"“I regret to inform you that your application has been unsuccessful.” The tone is ...",["joyful","formal and regretful","sarcastic","casual"],1);
+q(2,-1,"Which is the best way to interrupt politely?",["Shut up.","Sorry to interrupt, but may I add something?","Listen to me!","Stop talking."],1);
+q(2,-1,"A: Would you mind if I borrowed your pen?<br>B: ___",["Yes, I borrow it.","Congratulations.","It’s fine, thanks.","Not at all. Here you are."],3);
+q(2,-1,"A: I got the lead role in the play!<br>B: No way! That’s awesome!<br>B shows ...",["anger","surprise and excitement","boredom","doubt"],1);
+q(2,-1,"Adding “possibly” to “Could you possibly help me?” makes the request ...",["ruder","more tentative and polite","an order","shorter in meaning"],1);
+q(2,-1,"A: You haven’t touched your food.<br>B: I’m not very hungry.<br>B is ...",["complaining about the cook","explaining why","asking for more","leaving"],1);
+q(2,-1,"“Let’s call it a day.” means ...",["let’s phone someone","let’s stop working for today","let’s start work","let’s name the day"],1);
+q(2,-1,"A: I’ll treat you to lunch.<br>B: Oh, you shouldn’t have!<br>B is ...",["angry","grateful but modest","refusing rudely","bored"],1);
+q(2,-1,"A: Nice to meet you.<br>B: ___",["Nice to meet you too.","Goodbye.","I’m fine, thank you very much.","Not at all."],0);
+q(2,-1,"“Needless to say, we were disappointed.” “Needless to say” means ...",["we said nothing","obviously","it was needless","unfortunately not"],1);
+q(2,-1,"A: Can I have the bill, please?<br>This conversation most likely takes place in ...",["a library","a restaurant","a classroom","a bank"],1);
+q(2,-1,"A: Don’t forget to submit the form by Friday.<br>B: I won’t. Thanks for reminding me.<br>B ...",["promises to remember","refuses","forgets","is angry"],0);
+q(2,-1,"Which sentence is appropriate in a formal email?",["Here’s the stuff.","Please find attached the report.","Check this out!","Got your file, thx."],1);
+q(2,-1,"“I beg to differ.” means ...",["I ask for money","I politely disagree","I agree","I beg you"],1);
+q(3,-1,"Arrange logically:<br>1. However, it also brings problems such as addiction.<br>2. Social media helps people stay connected.<br>3. Therefore, we must use it wisely.",["1 – 2 – 3","3 – 1 – 2","2 – 1 – 3","2 – 3 – 1"],2);
+q(3,-1,"He is addicted ___ video games.",["at","with","for","to"],3);
+q(3,-1,"She is fluent ___ three languages.",["in","at","on","of"],0);
+q(3,-1,"The book belongs ___ me.",["for","to","at","with"],1);
+q(3,-1,"They are suspicious ___ strangers.",["to","at","of","on"],2);
+q(3,-1,"How many errors are in this sentence? “Their was a lot of people at the party last night.”",["1","2","3","4"],1);
+q(3,-1,"Find the incorrect part: “She has <b>(A)</b> been working <b>(B)</b> here since three years <b>(C)</b>.”",["has (A)","been working (B)","since three years (C)","No error"],2);
+q(3,-1,"If you study, you will pass. Tono did not pass. So ...",["Tono studied","Tono did not study","Tono cheated","Tono was ill"],1);
+q(3,-1,"Unscramble: the / library / is / located / near / school / the",["The school is located near the library the.","Near the library is the school located.","The library is located near the school.","Located the library is the near school."],2);
+q(3,-1,"Which sentence is correct?",["Few people knows the answer.","A few people knows the answer.","Few people know the answer.","Few people is knowing the answer."],2);
+q(3,-1,"She was surprised ___ the result.",["of","by","for","to"],1);
+q(3,-1,"“I look forward to meet you.” The best correction is ...",["I look forward to meeting you.","I look forward meeting you.","I looked forward to meet you.","I look forward for meet you."],0);
+q(3,-1,"Which sentence has an error?",["We discussed the plan.","We talked about the plan.","We discussed about the plan.","We debated the plan."],2);
+q(3,-1,"Today is Monday. The library is closed on Mondays. Which is true?",["The library is open today","The library is closed today","The library is closed tomorrow","Today is a holiday"],1);
+q(3,-1,"Arrange logically:<br>1. She checked the map.<br>2. They got lost in the forest.<br>3. At last, they found the right path.",["1 – 2 – 3","3 – 1 – 2","2 – 3 – 1","2 – 1 – 3"],3);
+q(3,-1,"“The childrens is playing in the garden happy.” The best correction is ...",["The childrens are playing in the garden happily.","The children are playing happily in the garden.","The children is playing in the garden happy.","The child are playing happy in garden."],1);
+P.push("The first printed newspapers were small and expensive, so only wealthy people could buy them. Over time, new machines made printing cheaper and faster. As a result, newspapers reached ordinary families, and more people learned about events beyond their own villages. Some historians argue that this change helped ordinary citizens take part in public discussions.","Mr. Wijaya looked at the sky and frowned. The clouds were heavy, and the wind had suddenly turned cold. “Bring the clothes in,” he called to his daughter. Minutes later, the first drops fell on the empty line. He smiled quietly; his old knees had never been wrong about the weather.");
+q(0,-1,"The new policy is intended to ___ pollution in big cities.",["curb","create","cheer","carry"],0);
+q(0,-1,"She ___ for the company since she graduated.",["works","has been working","is working","worked"],1);
+q(0,-1,"The synonym of “frequent” is ...",["rare","regular","sudden","silent"],1);
+q(0,-1,"The antonym of “diligent” is ...",["hard-working","careful","lazy","active"],2);
+q(0,-1,"The movie ___ we watched last night was boring.",["who","whose","which","where"],2);
+q(0,-1,"He didn’t study; ___, he failed.",["moreover","as a result","in contrast","for example"],1);
+q(0,-1,"___ the soup was hot, he drank it.",["Because","If","Unless","Although"],3);
+q(0,-1,"The letters ___ yesterday.",["sent","have send","were sent","are sent"],2);
+q(0,-1,"Of the three sisters, she is ___.",["taller","more tall","tallest one","the tallest"],3);
+q(0,-1,"The teacher asked us to ___ the main points of the text.",["sacrifice","summarise","suspect","stretch"],1);
+q(0,-1,"If I ___ rich, I would travel the world.",["am","were","will be","would be"],1);
+q(0,-1,"Neither Ali nor Budi ___ the answer.",["know","knows","are knowing","have known"],1);
+q(0,-1,"The synonym of “hesitate” is ...",["rush","hurry","pause","jump"],2);
+q(0,-1,"I enjoy ___ novels in my free time.",["read","to read","reading","reads"],2);
+q(0,-1,"That is the reason ___ he left early.",["where","whose","why","who"],2);
+q(0,-1,"The antonym of “compulsory” is ...",["required","optional","necessary","formal"],1);
+q(1,12,"Why could only wealthy people buy the first newspapers?",["They were hard to find","They were small and expensive","They were banned","They were written in code"],1);
+q(1,12,"What made printing cheaper and faster?",["New machines","Wealthy readers","Bigger villages","Shorter news"],0);
+q(1,12,"As a result of cheaper printing, ...",["newspapers disappeared","only villages read them","ordinary families could read newspapers","prices doubled"],2);
+q(1,12,"“Events beyond their own villages” implies that people ...",["learned about the wider world","left their villages","stopped reading","disliked news"],0);
+q(1,12,"The main idea of the text is ...",["printing machines were noisy","cheaper printing widened access to information","historians dislike newspapers","villages were small"],1);
+q(1,13,"What did Mr. Wijaya sense?",["A fire","A visitor","Rain was coming","A holiday"],2);
+q(1,13,"Why did he tell his daughter to bring in the clothes?",["To keep them from getting wet","To iron them","To sell them","To wash them"],0);
+q(1,13,"“His old knees had never been wrong” implies that he ...",["has a knee injury only","predicts weather from his aching knees","likes walking","dislikes rain"],1);
+q(1,13,"Which detail shows the weather was changing?",["The empty line","Heavy clouds and a cold wind","His daughter’s call","His old knees"],1);
+q(1,13,"Mr. Wijaya’s mood at the end is ...",["furious","fearful","quietly satisfied","bored"],2);
+q(1,-1,"“Donating one book is just a drop in the ocean.” It means ...",["a very small amount compared to the need","a big help","a wet book","a famous act"],0);
+q(1,-1,"“It’s raining cats and dogs.” It means it is raining ...",["lightly","heavily","with animals","at night"],1);
+q(1,-1,"“She is the apple of his eye.” She is ...",["his fruit","a bad habit","someone he dearly loves","a stranger"],2);
+q(1,-1,"“The news hit him like a ton of bricks.” It means he was ...",["hurt by bricks","deeply shocked","very happy","unaware"],1);
+q(1,-1,"“Are you pulling my leg?” means ...",["are you kicking me","are you joking with me","are you helping me","are you leaving"],1);
+q(1,-1,"“Her voice is as smooth as silk.” This is a ...",["metaphor","hyperbole","simile","fact"],2);
+q(2,-1,"A: Could you recommend a good book?<br>B: ___",["I’m reading.","Sure. How about this novel?","You’re welcome.","Never mind."],1);
+q(2,-1,"A: I’m sorry, but this seat is reserved.<br>B: ___",["Oh, my mistake. I’ll move.","That’s fantastic.","Thank you for reserving.","Not at all."],0);
+q(2,-1,"“Please, please, don’t tell anyone!” The speaker sounds ...",["proud","angry","pleading","bored"],2);
+q(2,-1,"Which expression politely asks someone to repeat something?",["What?","Say it again.","I beg your pardon?","Huh?"],2);
+q(2,-1,"A: How was your trip?<br>B: It was a nightmare. Our flight was delayed for six hours.<br>B feels ...",["delighted","frustrated","proud","relaxed"],1);
+q(2,-1,"A: Why don’t you try the red one?<br>A is ...",["making a suggestion","giving an order","complaining","refusing"],0);
+q(2,-1,"“I was wondering if you could help me.” This is ...",["a rude demand","an indirect polite request","a farewell","a complaint"],1);
+q(2,-1,"A: I’ll see you off at the station.<br>B: You needn’t bother.<br>B means ...",["it’s not necessary","please come","you are annoying","I’ll be late"],0);
+q(2,-1,"A: Do you mind turning off the music?<br>B: Not at all.<br>B will ...",["keep it on","turn it off","turn it louder","leave"],1);
+q(2,-1,"“He’s got a lot on his plate.” It means he ...",["is eating much","is very hungry","has many tasks to handle","is a chef"],2);
+q(2,-1,"Which opening is suitable when you don’t know the recipient’s name?",["Hi there!","Dear Sir or Madam,","Hey buddy,","Yo!"],1);
+q(2,-1,"A: What do you think of my idea?<br>B: It’s interesting, but I’m not sure it’ll work.<br>B is ...",["politely expressing doubt","fully agreeing","laughing","refusing rudely"],0);
+q(2,-1,"“Cheers!” is said when people ...",["leave","raise glasses for a toast","apologise","complain"],1);
+q(2,-1,"A: Sorry, wrong number.<br>B: That’s OK.<br>This conversation takes place ...",["in a shop","in a classroom","on the phone","at a station"],2);
+q(2,-1,"“May I have your attention, please?” is usually said when someone ...",["makes an announcement","says goodbye","asks for food","complains"],0);
+q(2,-1,"“That’s the last straw!” The speaker ...",["loves straw","has run out of patience","is cleaning","is joking"],1);
+q(3,-1,"Arrange logically:<br>1. Many animals lose their homes as a result.<br>2. Forests are being cut down for farmland.<br>3. Governments should protect them.",["1 – 2 – 3","3 – 2 – 1","2 – 1 – 3","2 – 3 – 1"],2);
+q(3,-1,"She is proud ___ her brother.",["of","at","with","for"],0);
+q(3,-1,"He is ashamed ___ his behaviour.",["for to","at","of","on"],2);
+q(3,-1,"I’m grateful ___ your help.",["to","for","of","with"],1);
+q(3,-1,"They were shocked ___ the news.",["to","for","with","at"],3);
+q(3,-1,"How many errors are in this sentence? “A lots of student is absent today.”",["1","2","3","4"],2);
+q(3,-1,"Find the incorrect part: “The students, who <b>(A)</b> was <b>(B)</b> late, were <b>(C)</b> punished <b>(D)</b>.”",["who (A)","was (B)","were (C)","punished (D)"],1);
+q(3,-1,"Rina is older than Sita. Sita is older than Tari. Which is certainly true?",["Tari is older than Rina","Rina is older than Tari","Sita is the youngest","Rina and Tari are twins"],1);
+q(3,-1,"Unscramble: know / whether / I / don’t / she / will / come",["I don’t know whether she will come.","Whether I don’t know she come will.","She will whether I don’t know come.","I know don’t she whether will come."],0);
+q(3,-1,"Which sentence is correct?",["I wish I can fly.","I wish I will fly.","I wish I flying.","I wish I could fly."],3);
+q(3,-1,"She has a talent ___ music.",["at","for","in on","of"],1);
+q(3,-1,"“He asked me what time was it.” The best correction is ...",["He asked me what time it was.","He asked me what time is it.","He asked me what was time it.","He asked me that what time it was."],0);
+q(3,-1,"Which sentence has an error?",["Please listen to me.","He listened me carefully.","She listens to music.","We listened to the radio."],1);
+q(3,-1,"A rectangle has four sides. This shape has five sides. Therefore, ...",["it is a rectangle","it is not a rectangle","it is a square","it has four corners"],1);
+q(3,-1,"Arrange logically:<br>1. Everyone was waiting for the result.<br>2. The principal announced the winner.<br>3. The hall suddenly burst into cheers.",["3 – 2 – 1","2 – 1 – 3","1 – 3 – 2","1 – 2 – 3"],3);
+q(3,-1,"“She are more smarter than her brother.” The best correction is ...",["She is more smarter than her brother.","She are smarter than her brother.","She is smarter than her brother.","She is most smarter than her brother."],2);
+P.push("Gotong royong, the tradition of working together, remains strong in many Indonesian villages. When a neighbour builds a house, others bring tools and food and help for free. Some young people think the custom is old-fashioned. However, many villages now use it to clean rivers and repair roads, proving that old values can solve modern problems.","Rendra loved drawing, but his drawings were ordinary until he began carrying a small notebook everywhere. Whenever he saw something interesting, he sketched it in minutes. Over the months, his lines became bolder and his ideas more original. His art teacher noted that talent had not changed; practice had.");
+q(0,-1,"The scientist made a ___ discovery that changed medicine.",["gloomy","greedy","groundbreaking","gentle"],2);
+q(0,-1,"When she called, I ___ a shower.",["took","was taking","have taken","take"],1);
+q(0,-1,"The synonym of “fragrant” is ...",["smelly","aromatic","bitter","dull"],1);
+q(0,-1,"The antonym of “transparent” is ...",["clear","opaque","thin","bright"],1);
+q(0,-1,"My uncle, ___ lives in Medan, is a pilot.",["whom","whose","which","who"],3);
+q(0,-1,"She was ill; ___, she went to school.",["nevertheless","therefore","besides","thus"],0);
+q(0,-1,"He will succeed ___ he works hard.",["unless","as long as","although","whereas"],1);
+q(0,-1,"The cake ___ by my mother every Sunday.",["makes","is made","is making","made"],1);
+q(0,-1,"This exam is ___ than the last one.",["most difficult","difficulter","the more difficult","more difficult"],3);
+q(0,-1,"The company will ___ a new product next month.",["lease","lurch","launch","lunge"],2);
+q(0,-1,"I’d rather ___ at home than go out.",["to stay","staying","stayed","stay"],3);
+q(0,-1,"No sooner had he sat down ___ the phone rang.",["when","than","then","that"],1);
+q(0,-1,"The synonym of “obvious” is ...",["hidden","clear","complex","minor"],1);
+q(0,-1,"The antonym of “ignorant” is ...",["unaware","knowledgeable","foolish","silent"],1);
+q(0,-1,"Despite ___ tired, she kept working.",["she was","to be","being","of being"],2);
+q(0,-1,"The more he ate, ___ he felt.",["sicker","the sick","more sick","the sicker"],3);
+q(0,-1,"She talks as if she ___ everything.",["knows","knew","has known","will know"],1);
+q(1,14,"What is gotong royong?",["A kind of food","A tradition of working together","A village festival","A type of house"],1);
+q(1,14,"What do neighbours do when someone builds a house?",["Charge a fee","Watch quietly","Bring tools and food and help for free","Build their own houses"],2);
+q(1,14,"What do many villages now use gotong royong for?",["Cleaning rivers and repairing roads","Holding contests","Selling tools","Teaching languages"],0);
+q(1,14,"The word “However” introduces ...",["an example","a contrast to the young people’s view","a cause","a time"],1);
+q(1,14,"The writer believes that ...",["old values can still solve modern problems","villages are old-fashioned","houses should be built alone","young people are lazy"],0);
+q(1,15,"What changed Rendra’s drawings?",["A new teacher","Sketching daily in a notebook","Expensive pencils","A drawing contest"],1);
+q(1,15,"“Talent had not changed; practice had.” It means ...",["he lost his talent","his improvement came from practice","he stopped drawing","talent is useless"],1);
+q(1,15,"“His lines became bolder” suggests he became ...",["more confident","more tired","more careless","more bored"],0);
+q(1,15,"The main idea of the text is ...",["notebooks are cheap","art teachers are strict","regular practice improves skill","drawing is easy"],2);
+q(1,15,"We can infer that Rendra ...",["is lazy","is hardworking","dislikes art","copies others"],1);
+q(1,-1,"“The bully got a taste of his own medicine.” It means he ...",["was treated the way he treats others","became ill","took medicine","was rewarded"],0);
+q(1,-1,"“You’re on thin ice.” It means you are ...",["skating","in a risky situation","very cold","very lucky"],1);
+q(1,-1,"“The problem is just the tip of the iceberg.” It means ...",["the problem is minor","the problem is frozen","the problem is solved","the visible part of a much bigger problem"],3);
+q(1,-1,"“My sister is a rock during hard times.” This is a ...",["simile","literal statement","metaphor meaning she is reliable","question"],2);
+q(1,-1,"“They don’t see eye to eye.” It means they ...",["disagree","stare at each other","are very tall","agree"],0);
+q(1,-1,"“He gave me the cold shoulder.” It means he ...",["hugged me","ignored me","felt cold","helped me"],1);
+q(1,-1,"“We killed two birds with one stone.” It means we ...",["hunted birds","threw stones","achieved two things with one action","failed twice"],2);
+q(2,-1,"A: Would you like to join us for dinner?<br>B: ___",["You’re welcome.","I’d love to, thank you.","Never mind.","Same to you."],1);
+q(2,-1,"A: I’m terribly sorry for forgetting your birthday.<br>B: ___",["Thanks a lot.","That’s wonderful.","It’s all right. It happens.","Good luck."],2);
+q(2,-1,"“I’m so proud of you, dear.” The tone is ...",["affectionate","angry","sarcastic","cold"],0);
+q(2,-1,"Which is a polite way to decline help?",["Go away.","Thanks, but I can manage.","I don’t need you.","No way."],1);
+q(2,-1,"A: How do you feel about the new rule?<br>B: To be honest, I’m not convinced.<br>B is ...",["doubtful","delighted","angry","sleepy"],0);
+q(2,-1,"A: Could you speak up a little?<br>A wants B to ...",["speak louder","speak softer","stop talking","stand up"],0);
+q(2,-1,"“I’m afraid I have some bad news.” The phrase “I’m afraid” is used to ...",["show fear of dogs","deliver bad news politely","say goodbye","give praise"],1);
+q(2,-1,"A: Take care!<br>B: ___",["You too.","Same here, sorry.","Never mind.","Not at all."],0);
+q(2,-1,"A: Will you be able to attend?<br>B: I’ll do my best.<br>B ...",["definitely refuses","promises to try but is not certain","is completely sure","is angry"],1);
+q(2,-1,"Which sentence is formal?",["Gonna head out now.","Hit me up later.","Kindly confirm your attendance.","See ya!"],2);
+q(2,-1,"A: I’m afraid the tickets are sold out.<br>B: Oh no! What a shame.<br>B shows ...",["disappointment","relief","anger","joy"],0);
+q(2,-1,"“You can say that again!” means ...",["please repeat","I strongly agree","I didn’t hear","I disagree"],1);
+q(2,-1,"A: Mind if I join you?<br>B: Be my guest.<br>B ...",["refuses","is confused","welcomes A","is angry"],2);
+q(2,-1,"“It’s now or never!” The tone is ...",["relaxed","urgent","bored","shy"],1);
+q(2,-1,"Which is the most appropriate email subject for a leave request?",["Help!!!","Hello","Urgent!!! read now","Request for Leave on 12–14 November"],3);
+q(2,-1,"A: This soup is too salty.<br>B: Sorry, I’ll add some water.<br>B ...",["offers a solution","ignores A","blames A","laughs"],0);
+q(2,-1,"“Thank you for your attention.” is usually said ...",["at the start of a meal","at the end of a speech","when meeting a friend","when apologising"],1);
+q(3,-1,"Arrange logically:<br>1. Therefore, we should reduce plastic use.<br>2. Plastic never fully disappears.<br>3. It only breaks into tiny pieces that harm sea life.",["1 – 2 – 3","3 – 2 – 1","2 – 3 – 1","2 – 1 – 3"],2);
+q(3,-1,"He is accustomed ___ cold weather.",["to","with","at","for"],0);
+q(3,-1,"We are looking ___ a new house.",["at to","after","for","on"],2);
+q(3,-1,"I am short ___ money this month.",["on","of","in","with"],1);
+q(3,-1,"The teacher is angry ___ the students.",["to","with","on","of"],1);
+q(3,-1,"How many errors are in this sentence? “Yesterday I buyed a new shoes.”",["1","2","3","4"],1);
+q(3,-1,"Find the incorrect part: “Although it was raining <b>(A)</b>, but <b>(B)</b> we went <b>(C)</b> to the beach <b>(D)</b>.”",["was raining (A)","but (B)","we went (C)","to the beach (D)"],1);
+q(3,-1,"If the alarm rings, students leave the room. The students did not leave. So ...",["the alarm rang","the alarm did not ring","the room was locked","the students were late"],1);
+q(3,-1,"Unscramble: never / he / late / is / for / school",["Never he is late for school.","He late is never for school.","He is never late for school.","For school he never late is."],2);
+q(3,-1,"Which sentence is correct?",["She is one of the best student in class.","She is one of best students in class.","She is one of the best students in class.","She is one the best students in class."],2);
+q(3,-1,"He apologised ___ breaking the vase.",["of","on","to","for"],3);
+q(3,-1,"“The informations are very useful.” The best correction is ...",["The information are very useful.","The informations is very useful.","The information is very useful.","The informations were useful."],2);
+q(3,-1,"Which sentence has an error?",["He explained the problem to me.","He told me the problem.","He explained me the problem.","He described the problem to me."],2);
+q(3,-1,"One of Ani, Budi, and Cici took the book. Ani did not. Budi did not. Therefore, ...",["Ani took it","Budi took it","Cici took it","nobody took it"],2);
+q(3,-1,"Arrange logically:<br>1. He bought a ticket.<br>2. He decided to visit his grandmother.<br>3. The train left at six.",["1 – 2 – 3","3 – 2 – 1","2 – 3 – 1","2 – 1 – 3"],3);
+q(3,-1,"“Neither of the girl have finish their homework.” The best correction is ...",["Neither of the girls has finished her homework.","Neither of the girls have finish her homework.","Neither of the girl has finished their homework.","Neither the girls has finishing homework."],0);
+q(3,-1,"He has been absent ___ school for three days.",["of","from","at","by"],1);
+Q.sort(function(a,b){return a.c-b.c});
+(function(){Q.forEach(function(x,n){var t=x.o.join("|");if(/^\d$/.test(x.o[0])||/–/.test(t)||/No error|Cannot be known/.test(t))return;var c=x.o[x.a],o=x.o.slice(),s=n+7;for(var i=o.length-1;i>0;i--){s=(s*9301+49297)%233280;var j=Math.floor(s/233280*(i+1)),m=o[i];o[i]=o[j];o[j]=m}x.o=o;x.a=o.indexOf(c)})})();
+var app=document.getElementById("app"),L=[],i=0,A={},mode=-1,KEY="olim4bagian2";
+function hk(x){var s=x.p+"|"+x.s+"|"+x.o.join("|"),h=5381,j;for(j=0;j<s.length;j++)h=((h<<5)+h+s.charCodeAt(j))|0;return"k"+(h>>>0).toString(36)}
+Q.forEach(function(x){x.k=hk(x)});
+function load(){try{var r=localStorage.getItem(KEY);if(r){var d=JSON.parse(r);if(d&&d.A)A=d.A;if(d&&typeof d.m==="number")mode=d.m}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({A:A,m:mode}))}catch(e){}}
+function el(h){app.innerHTML=h}
+function pick(){return mode<0?Q.slice():Q.filter(function(x){return x.c===mode})}
+function answered(x){return A[x.k]!==undefined}
+function score(){var s=0;L.forEach(function(x){if(A[x.k]===x.a)s++});return s}
+function firstOpen(){for(var j=0;j<L.length;j++)if(!answered(L[j]))return j;return 0}
+function info(){var l=pick(),n=l.filter(answered).length;return"Terjawab "+n+" dari "+l.length+" soal"+(n?" · jawaban tersimpan di perangkat ini":"")}
+function start(){
+ var o='<option value="-1">Semua bagian ('+Q.length+' soal)</option>';
+ C.forEach(function(n,k){o+='<option value="'+k+'"'+(k===mode?" selected":"")+'>'+(k+1)+'. '+n+'</option>'});
+ el('<h1>Latihan English Olympiad Ruangguru</h1><div class="mu">Tingkat provinsi · '+Q.length+' soal dari 4 bagian</div><div class="card"><label class="mu" for="sel">Pilih materi</label><select id="sel">'+o+'</select><div class="mu" id="inf">'+info()+'</div><button class="btn" id="go">Mulai / Lanjutkan</button><button class="btn sec" id="rc">Lihat rekap</button><button class="btn sec" id="rs">Hapus jawaban tersimpan</button></div>');
+ var sel=document.getElementById("sel");
+ function sync(){mode=+sel.value;document.getElementById("inf").textContent=info();save()}
+ sel.onchange=sync;
+ document.getElementById("go").onclick=function(){sync();L=pick();i=firstOpen();show()};
+ document.getElementById("rc").onclick=function(){sync();L=pick();finish()};
+ var rs=document.getElementById("rs"),armed=false;
+ rs.onclick=function(){sync();if(!armed){armed=true;rs.textContent="Tekan sekali lagi untuk menghapus";return}
+  pick().forEach(function(x){delete A[x.k]});save();start()};
+}
+function show(){
+ var x=L[i],a=A[x.k],done=a!==undefined;
+ var h='<div class="top mu"><span>Soal '+(i+1)+' / '+L.length+'</span><span id="sc">Skor: '+score()+'</span></div><div class="bar"><i style="width:'+((i+1)/L.length*100)+'%"></i></div><div class="jump"><label class="mu" for="jn">Ke soal no.</label><input id="jn" type="number" inputmode="numeric" min="1" max="'+L.length+'" value="'+(i+1)+'"><button id="jb">Pergi</button><button id="rk" class="sec">Rekap</button></div><div class="card"><div class="mu" style="margin-bottom:8px">'+C[x.c]+'</div>';
+ if(x.p>=0)h+='<p class="pass">'+P[x.p]+'</p>';
+ h+='<p class="q">'+x.s+'</p>';
+ x.o.forEach(function(t,k){var c="";if(done){if(k===x.a)c=" ok";else if(k===a)c=" no"}h+='<button class="o'+c+'" data-k="'+k+'"'+(done?" disabled":"")+'><b>'+"ABCD"[k]+'.</b>'+t+'</button>'});
+ h+='</div><div style="display:flex;gap:8px"><button class="btn sec" id="pv"'+(i?"":" disabled")+'>Kembali</button><button class="btn" id="nx">'+(i+1<L.length?"Lanjut":"Lihat hasil")+'</button></div>';
+ el(h);
+ var bs=app.querySelectorAll(".o");
+ bs.forEach(function(b){b.onclick=function(){
+  if(answered(x))return;var k=+b.dataset.k;A[x.k]=k;save();
+  if(k===x.a)b.classList.add("ok");else{b.classList.add("no");bs[x.a].classList.add("ok")}
+  bs.forEach(function(y){y.disabled=true});
+  document.getElementById("sc").textContent="Skor: "+score();
+ }});
+ document.getElementById("nx").onclick=function(){i++;i<L.length?show():finish()};
+ document.getElementById("pv").onclick=function(){if(i){i--;show()}};
+ document.getElementById("rk").onclick=finish;
+ function go(){var n=parseInt(document.getElementById("jn").value,10);if(n>=1&&n<=L.length){i=n-1;show()}}
+ document.getElementById("jb").onclick=go;
+ document.getElementById("jn").onkeydown=function(e){if(e.key==="Enter")go()};
+ window.scrollTo(0,0);
+}
+function finish(){
+ var res=C.map(function(){return{b:0,s:0,k:0}}),tb=0,ts=0;
+ L.forEach(function(x){var a=A[x.k];if(a===undefined)res[x.c].k++;else if(a===x.a){res[x.c].b++;tb++}else{res[x.c].s++;ts++}});
+ var tk=L.length-tb-ts,p=L.length?Math.round(tb/L.length*100):0;
+ var h='<h1>Rekap Hasil</h1><div class="card"><div class="big">'+tb+' / '+L.length+'</div><div class="mu" style="text-align:center">'+p+'% benar</div><div class="row" style="margin-top:10px"><span class="g">Benar</span><b>'+tb+'</b></div><div class="row"><span class="r">Salah</span><b>'+ts+'</b></div><div class="row"><span class="mu">Belum dijawab</span><b>'+tk+'</b></div></div><div class="card"><div class="mu" style="margin-bottom:4px">Per materi</div>';
+ res.forEach(function(r,k){var t=r.b+r.s+r.k;if(t)h+='<div class="row"><span>'+(k+1)+'. '+C[k]+'</span><span class="rc"><b class="g">✓ '+r.b+'</b> <b class="r">✗ '+r.s+'</b> <span class="mu">– '+r.k+'</span></span></div>'});
+ h+='</div>';
+ if(ts+tk)h+='<button class="btn" id="rt">Ulangi soal salah &amp; belum dijawab ('+(ts+tk)+')</button>';
+ h+='<button class="btn sec" id="bk">Kembali ke soal</button><button class="btn sec" id="mn">Menu awal</button>';
+ el(h);
+ var rt=document.getElementById("rt");
+ if(rt)rt.onclick=function(){var w=L.filter(function(x){return A[x.k]!==x.a});w.forEach(function(x){delete A[x.k]});save();L=w;i=0;show()};
+ document.getElementById("bk").onclick=function(){if(L.length){i=firstOpen();show()}else start()};
+ document.getElementById("mn").onclick=start;
+ window.scrollTo(0,0);
+}
+load();
+start();
+</script>
+</body>
+</html>
