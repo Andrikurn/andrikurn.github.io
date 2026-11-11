@@ -33,6 +33,9 @@ select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--bd);bac
 .jump{display:flex;align-items:center;gap:8px;margin:10px 0}
 .jump input{width:90px;padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
 .jump button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.btn.sec{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.jump button.sec{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.g{color:var(--ok)}.r{color:var(--no)}.rc{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -600,46 +603,70 @@ q(14,-1,"The bald eagle is a national symbol of ...",["Canada","the United State
 q(14,-1,"Which holiday is celebrated on 25 December?",["Halloween","Easter","Christmas","Thanksgiving"],2);
 q(14,-1,"Which English writer wrote the play Hamlet?",["Charles Dickens","Jane Austen","J. K. Rowling","William Shakespeare"],3);
 Q.sort(function(a,b){return a.c-b.c});
-var app=document.getElementById("app"),L=[],i=0,sc=0,done=false,res=[],A={};
-function score(){var s=0;L.forEach(function(x,j){if(A[j]===x.a)s++});return s}
+var app=document.getElementById("app"),L=[],i=0,A={},mode=-1,KEY="quizOlimpiadeInggrisV1";
+function hk(x){var s=x.p+"|"+x.s+"|"+x.o.join("|"),h=5381,j;for(j=0;j<s.length;j++)h=((h<<5)+h+s.charCodeAt(j))|0;return"k"+(h>>>0).toString(36)}
+Q.forEach(function(x){x.k=hk(x)});
+function load(){try{var r=localStorage.getItem(KEY);if(r){var d=JSON.parse(r);if(d&&d.A)A=d.A;if(d&&typeof d.m==="number")mode=d.m}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({A:A,m:mode}))}catch(e){}}
 function el(h){app.innerHTML=h}
+function pick(){return mode<0?Q.slice():Q.filter(function(x){return x.c===mode})}
+function answered(x){return A[x.k]!==undefined}
+function score(){var s=0;L.forEach(function(x){if(A[x.k]===x.a)s++});return s}
+function firstOpen(){for(var j=0;j<L.length;j++)if(!answered(L[j]))return j;return 0}
+function info(){var l=pick(),n=l.filter(answered).length;return"Terjawab "+n+" dari "+l.length+" soal"+(n?" · jawaban tersimpan di perangkat ini":"")}
 function start(){
  var o='<option value="-1">Semua kisi-kisi ('+Q.length+' soal)</option>';
- C.forEach(function(n,k){o+='<option value="'+k+'">'+(k+1)+'. '+n+'</option>'});
- el('<h1>Quiz Olimpiade Bahasa Inggris SMP</h1><div class="mu">Tingkat nasional · '+Q.length+' soal dari 15 kisi-kisi</div><div class="card"><label class="mu" for="sel">Pilih materi</label><select id="sel">'+o+'</select><button class="btn" id="go">Mulai</button></div>');
- document.getElementById("go").onclick=function(){
-  var v=+document.getElementById("sel").value;
-  L=Q.filter(function(x){return v<0||x.c===v});i=0;sc=0;A={};show()};
+ C.forEach(function(n,k){o+='<option value="'+k+'"'+(k===mode?" selected":"")+'>'+(k+1)+'. '+n+'</option>'});
+ el('<h1>Quiz Olimpiade Bahasa Inggris SMP</h1><div class="mu">Tingkat nasional · '+Q.length+' soal dari 15 kisi-kisi</div><div class="card"><label class="mu" for="sel">Pilih materi</label><select id="sel">'+o+'</select><div class="mu" id="inf">'+info()+'</div><button class="btn" id="go">Mulai / Lanjutkan</button><button class="btn sec" id="rc">Lihat rekap</button><button class="btn sec" id="rs">Hapus jawaban tersimpan</button></div>');
+ var sel=document.getElementById("sel");
+ function sync(){mode=+sel.value;document.getElementById("inf").textContent=info();save()}
+ sel.onchange=sync;
+ document.getElementById("go").onclick=function(){sync();L=pick();i=firstOpen();show()};
+ document.getElementById("rc").onclick=function(){sync();L=pick();finish()};
+ var rs=document.getElementById("rs"),armed=false;
+ rs.onclick=function(){sync();if(!armed){armed=true;rs.textContent="Tekan sekali lagi untuk menghapus";return}
+  pick().forEach(function(x){delete A[x.k]});save();start()};
 }
 function show(){
- var x=L[i];done=A[i]!==undefined;
- var h='<div class="top mu"><span>Soal '+(i+1)+' / '+L.length+'</span><span>Skor: '+score()+'</span></div><div class="bar"><i style="width:'+(i/L.length*100)+'%"></i></div><div class="jump"><label class="mu" for="jn">Ke soal no.</label><input id="jn" type="number" inputmode="numeric" min="1" max="'+L.length+'" value="'+(i+1)+'"><button id="jb">Pergi</button></div><div class="card"><div class="mu" style="margin-bottom:8px">'+C[x.c]+'</div>';
+ var x=L[i],a=A[x.k],done=a!==undefined;
+ var h='<div class="top mu"><span>Soal '+(i+1)+' / '+L.length+'</span><span id="sc">Skor: '+score()+'</span></div><div class="bar"><i style="width:'+((i+1)/L.length*100)+'%"></i></div><div class="jump"><label class="mu" for="jn">Ke soal no.</label><input id="jn" type="number" inputmode="numeric" min="1" max="'+L.length+'" value="'+(i+1)+'"><button id="jb">Pergi</button><button id="rk" class="sec">Rekap</button></div><div class="card"><div class="mu" style="margin-bottom:8px">'+C[x.c]+'</div>';
  if(x.p>=0)h+='<p class="pass">'+P[x.p]+'</p>';
  h+='<p class="q">'+x.s+'</p>';
- x.o.forEach(function(t,k){var c='';if(done){if(k===x.a)c=' ok';else if(k===A[i])c=' no'}h+='<button class="o'+c+'" data-k="'+k+'"'+(done?' disabled':'')+'><b>'+"ABCD"[k]+'.</b>'+t+'</button>'});
- h+='</div><div style="display:flex;gap:8px"><button class="btn" id="pv" style="background:var(--card);color:var(--tx);border:1px solid var(--bd)"'+(i?'':' disabled')+'>Kembali</button><button class="btn" id="nx">'+(i+1<L.length?'Lanjut':'Lihat hasil')+'</button></div>';
+ x.o.forEach(function(t,k){var c="";if(done){if(k===x.a)c=" ok";else if(k===a)c=" no"}h+='<button class="o'+c+'" data-k="'+k+'"'+(done?" disabled":"")+'><b>'+"ABCD"[k]+'.</b>'+t+'</button>'});
+ h+='</div><div style="display:flex;gap:8px"><button class="btn sec" id="pv"'+(i?"":" disabled")+'>Kembali</button><button class="btn" id="nx">'+(i+1<L.length?"Lanjut":"Lihat hasil")+'</button></div>';
  el(h);
  var bs=app.querySelectorAll(".o");
  bs.forEach(function(b){b.onclick=function(){
-  if(done)return;done=true;var k=+b.dataset.k;A[i]=k;
-  if(k===x.a){b.classList.add("ok")}else{b.classList.add("no");bs[x.a].classList.add("ok")}
+  if(answered(x))return;var k=+b.dataset.k;A[x.k]=k;save();
+  if(k===x.a)b.classList.add("ok");else{b.classList.add("no");bs[x.a].classList.add("ok")}
   bs.forEach(function(y){y.disabled=true});
-  document.querySelector(".top span:last-child").textContent="Skor: "+score();
+  document.getElementById("sc").textContent="Skor: "+score();
  }});
  document.getElementById("nx").onclick=function(){i++;i<L.length?show():finish()};
  document.getElementById("pv").onclick=function(){if(i){i--;show()}};
+ document.getElementById("rk").onclick=finish;
  function go(){var n=parseInt(document.getElementById("jn").value,10);if(n>=1&&n<=L.length){i=n-1;show()}}
  document.getElementById("jb").onclick=go;
  document.getElementById("jn").onkeydown=function(e){if(e.key==="Enter")go()};
  window.scrollTo(0,0);
 }
 function finish(){
- res=C.map(function(){return[0,0]});sc=0;L.forEach(function(x,j){if(A[j]!==undefined){res[x.c][1]++;if(A[j]===x.a){sc++;res[x.c][0]++}}});var p=Math.round(sc/L.length*100);
- var h='<h1>Hasil Quiz</h1><div class="card"><div class="big">'+sc+' / '+L.length+'</div><div class="mu" style="text-align:center">'+p+'% benar</div></div><div class="card">';
- res.forEach(function(r,k){if(r[1])h+='<div class="row"><span>'+C[k]+'</span><b>'+r[0]+'/'+r[1]+'</b></div>'});
- h+='</div><button class="btn" id="re">Ulangi</button>';
- el(h);document.getElementById("re").onclick=start;window.scrollTo(0,0);
+ var res=C.map(function(){return{b:0,s:0,k:0}}),tb=0,ts=0;
+ L.forEach(function(x){var a=A[x.k];if(a===undefined)res[x.c].k++;else if(a===x.a){res[x.c].b++;tb++}else{res[x.c].s++;ts++}});
+ var tk=L.length-tb-ts,p=L.length?Math.round(tb/L.length*100):0;
+ var h='<h1>Rekap Hasil</h1><div class="card"><div class="big">'+tb+' / '+L.length+'</div><div class="mu" style="text-align:center">'+p+'% benar</div><div class="row" style="margin-top:10px"><span class="g">Benar</span><b>'+tb+'</b></div><div class="row"><span class="r">Salah</span><b>'+ts+'</b></div><div class="row"><span class="mu">Belum dijawab</span><b>'+tk+'</b></div></div><div class="card"><div class="mu" style="margin-bottom:4px">Per materi</div>';
+ res.forEach(function(r,k){var t=r.b+r.s+r.k;if(t)h+='<div class="row"><span>'+(k+1)+'. '+C[k]+'</span><span class="rc"><b class="g">✓ '+r.b+'</b> <b class="r">✗ '+r.s+'</b> <span class="mu">– '+r.k+'</span></span></div>'});
+ h+='</div>';
+ if(ts+tk)h+='<button class="btn" id="rt">Ulangi soal salah &amp; belum dijawab ('+(ts+tk)+')</button>';
+ h+='<button class="btn sec" id="bk">Kembali ke soal</button><button class="btn sec" id="mn">Menu awal</button>';
+ el(h);
+ var rt=document.getElementById("rt");
+ if(rt)rt.onclick=function(){var w=L.filter(function(x){return A[x.k]!==x.a});w.forEach(function(x){delete A[x.k]});save();L=w;i=0;show()};
+ document.getElementById("bk").onclick=function(){if(L.length){i=firstOpen();show()}else start()};
+ document.getElementById("mn").onclick=start;
+ window.scrollTo(0,0);
 }
+load();
 start();
 </script>
 </body>
